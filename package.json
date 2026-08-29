@@ -1,0 +1,41 @@
+{
+  "name": "credence0g-agentbonds",
+  "version": "1.0.0",
+  "description": "Autonomous AI Agent Credit Bureau & On-Chain Debt Market on 0G Chain, 0G Storage, and 0G Compute",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node server.js",
+    "compile:contracts": "hardhat compile",
+    "test:contracts": "hardhat test",
+    "deploy:0g": "hardhat run scripts/deploy.ts",
+    "test:0g": "hardhat run scripts/test-0g-live.ts",
+    "verify:0g": "hardhat run scripts/verify-0g-live-network.ts",
+    "oracle:daemon": "hardhat run scripts/oracle-daemon.ts",
+    "seed": "hardhat run scripts/seed.ts"
+  },
+  "keywords": [
+    "0G",
+    "zero-gravity",
+    "credit-rating",
+    "ai-agents",
+    "bonds",
+    "rwa",
+    "verifiable-compute",
+    "decentralized-storage"
+  ],
+  "author": "Credence0G Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@types/node": "^20.11.0",
+    "dotenv": "^16.4.5",
+    "hardhat": "^2.22.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.0.2",
+    "ethers": "^6.11.1",
+    "axios": "^1.6.8"
+  }
+}

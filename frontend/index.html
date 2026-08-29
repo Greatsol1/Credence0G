@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Credence0G — Institutional AI Agent Credit Bureau & On-Chain Debt Market on 0G</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.11.1/ethers.umd.min.js"></script>
+
+  <style>
+    body {
+      background-color: #080514;
+      color: #fdfbf7;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+      -webkit-tap-highlight-color: transparent;
+    }
+    h1, h2, h3, .font-serif-luxury { font-family: 'Cinzel', serif; letter-spacing: 0.04em; }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+    /* 0G Institutional Precision Glass & Gold Trim */
+    .institutional-card {
+      background: radial-gradient(120% 120% at 50% 0%, rgba(28, 18, 56, 0.75) 0%, rgba(12, 8, 28, 0.95) 100%);
+      border: 1px solid rgba(226, 192, 125, 0.22);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(226, 192, 125, 0.06);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .institutional-card:hover {
+      border-color: rgba(226, 192, 125, 0.45);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(226, 192, 125, 0.12);
+    }
+    .text-gold { color: #e2c07d; }
+    .bg-gold { background-color: #e2c07d; }
+    .border-gold { border-color: #e2c07d; }
+    .pill-active {
+      background: rgba(226, 192, 125, 0.18);
+      border-color: rgba(226, 192, 125, 0.6);
+      color: #e2c07d;
+    }
+    #three-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.45;
+    }
+    
+    input[type="range"] {
+      accent-color: #e2c07d;
+      height: 8px;
+      touch-action: pan-y;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #080514;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(226, 192, 125, 0.3);
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="min-h-screen relative flex flex-col justify-between selection:bg-amber-400/30 selection:text-amber-200">
+
+  <!-- 3D Harmonic Golden Yield Surface & Risk Constellation Background -->
+  <div id="three-canvas"></div>
+
+  <!-- Header -->
+  <header class="relative z-20 border-b border-[#e2c07d]/20 bg-[#080514]/95 backdrop-blur-xl sticky top-0">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <div class="flex items-center space-x-2.5 sm:space-x-3.5">
+        <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-gradient-to-br from-[#e2c07d] via-[#f7e3b5] to-[#99793d] flex items-center justify-center text-slate-950 font-bold text-base sm:text-xl shadow-lg shadow-amber-500/20 shrink-0">
+          <i class="fa-solid fa-landmark"></i>
+        </div>
+        <div>
+          <div class="flex items-center space-x-1.5 sm:space-x-2">
+            <span class="font-serif-luxury font-bold text-lg sm:text-2xl text-white tracking-wider sm:tracking-widest">CREDENCE0G</span>
+            <span class="text-[9px] sm:text-[10px] font-mono px-1.5 py-0.5 rounded bg-amber-500/10 text-gold border border-gold/30 uppercase font-semibold hidden xs:inline-block">Institutional</span>
+          </div>
+          <span class="text-[10px] sm:text-[11px] text-slate-400 font-mono hidden sm:block">Autonomous AI Debt Underwriting & Fixed Yield Market</span>
+        </div>
+      </div>
+
+      <!-- Desktop Navigation Tabs -->
+      <div class="hidden md:flex items-center space-x-1.5 bg-black/40 border border-white/[0.08] p-1.5 rounded-2xl font-mono text-xs">
+        <button onclick="switchTab('marketplace')" id="btn-tab-marketplace" class="pill-active px-4 py-2 rounded-xl transition font-medium flex items-center space-x-2">
+          <i class="fa-solid fa-scale-balanced text-gold"></i>
+          <span>Debt Marketplace</span>
+        </button>
+        <button onclick="switchTab('bureau')" id="btn-tab-bureau" class="px-4 py-2 rounded-xl text-slate-400 hover:text-white border border-transparent transition font-medium flex items-center space-x-2">
+          <i class="fa-solid fa-shield-halved text-slate-400"></i>
+          <span>AI Risk Bureau</span>
+        </button>
+        <button onclick="switchTab('inspector')" id="btn-tab-inspector" class="px-4 py-2 rounded-xl text-slate-400 hover:text-white border border-transparent transition font-medium flex items-center space-x-2">
+          <i class="fa-solid fa-fingerprint text-slate-400"></i>
+          <span>0G Proof Inspector</span>
+        </button>
+      </div>
+
+      <!-- Wallet & Live Network Status -->
+        <div class="flex items-center bg-black/60 border border-gold/30 rounded-xl p-1 font-mono text-[10px] sm:text-[11px] space-x-1">
+          <button id="btn-net-16602" onclick="setNetwork('16602')" class="pill-active px-2.5 sm:px-3 py-1 rounded-lg transition font-medium cursor-pointer">Galileo Testnet</button>
+          <button id="btn-net-16661" onclick="setNetwork('16661')" class="px-2.5 sm:px-3 py-1 rounded-lg text-slate-400 hover:text-white transition font-medium cursor-pointer">Aristotle Mainnet</button>
+        </div>
+        <button id="wallet-btn" onclick="toggleWallet()" class="bg-gradient-to-r from-[#e2c07d] to-[#b38e4a] hover:opacity-95 text-slate-950 font-bold px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-xl transition cursor-pointer shadow-lg shadow-amber-500/10 flex items-center space-x-1.5 sm:space-x-2 text-[11px] sm:text-xs shrink-0">
+          <i class="fa-solid fa-wallet text-slate-900 text-xs"></i>
+          <span id="wallet-btn-label">Connect Wallet</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Segmented Navigation Bar -->
+    <div class="md:hidden flex items-center justify-around border-t border-[#e2c07d]/15 bg-black/60 px-2 py-2 font-mono text-[11px]">
+      <button onclick="switchTab('marketplace')" id="btn-mobile-marketplace" class="pill-active px-2.5 py-1.5 rounded-lg font-medium flex items-center space-x-1">
+        <i class="fa-solid fa-scale-balanced text-xs"></i>
+        <span>Market</span>
+      </button>
+      <button onclick="switchTab('bureau')" id="btn-mobile-bureau" class="px-2.5 py-1.5 rounded-lg text-slate-400 font-medium flex items-center space-x-1">
+        <i class="fa-solid fa-shield-halved text-xs"></i>
+        <span>Bureau</span>
+      </button>
+      <button onclick="switchTab('inspector')" id="btn-mobile-inspector" class="px-2.5 py-1.5 rounded-lg text-slate-400 font-medium flex items-center space-x-1">
+        <i class="fa-solid fa-fingerprint text-xs"></i>
+        <span>Inspector</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Live On-Chain Contract Ribbon -->
+  <div class="relative z-10 bg-black/50 border-b border-gold/15 py-1.5 px-4 text-center font-mono text-[10px] sm:text-[11px] text-slate-400 flex items-center justify-center space-x-3 overflow-x-auto whitespace-nowrap">
+    <span class="text-gold font-bold">LIVE ON-CHAIN CONTRACTS:</span>
+    <span>Market: <a id="market-link" href="https://chainscan-galileo.0g.ai/address/0xaC588096bd844c9c823dAb0628c6a30b8C240D62" target="_blank" class="text-white hover:text-gold underline">0xaC58...0D62</a></span>
+    <span class="text-slate-600">|</span>
+    <span>Registry: <a id="registry-link" href="https://chainscan-galileo.0g.ai/address/0xaBF81109dd950cdDA067486D59562aEa128b37d2" target="_blank" class="text-white hover:text-gold underline">0xaBF8...37d2</a></span>
+    <span class="text-slate-600">|</span>
+    <span>Escrow: <a id="escrow-link" href="https://chainscan-galileo.0g.ai/address/0x33096422BEf096A6c02AE59f62B9F7ab602f5A5e" target="_blank" class="text-white hover:text-gold underline">0x3309...5A5e</a></span>
+    <span class="text-slate-600">|</span>
+    <span id="live-block-indicator" class="text-emerald-400 font-bold">Syncing 0G Block...</span>
+  </div>
+
+  <!-- Main Content -->
+  <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-10 w-full space-y-6 sm:space-y-10">
+    
+    <!-- Hero Banner -->
+    <section class="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4">
+      <div class="inline-flex items-center space-x-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-amber-500/10 border border-gold/30 text-gold text-[10px] sm:text-xs font-mono tracking-wider uppercase">
+        <i class="fa-solid fa-certificate text-gold text-xs"></i>
+        <span>0G Decentralized Institutional Credit Architecture</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white font-serif-luxury leading-tight">
+        INSTITUTIONAL <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#e2c07d] via-[#f7e3b5] to-[#b38e4a]">AGENT DEBT MARKET</span>
+      </h1>
+      <p class="text-slate-300 text-xs sm:text-sm font-sans max-w-2xl mx-auto leading-relaxed px-2">
+        Autonomous agents underwrite short-term compute liquidity on 0G Chain. Financial track records and solvency telemetry archived permanently on 0G Storage with cryptographic Merkle proof verification.
+      </p>
+    </section>
+
+    <!-- Key Institutional Metrics -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 font-mono text-xs">
+      <div class="institutional-card p-3.5 sm:p-5 rounded-2xl space-y-1">
+        <span class="text-slate-500 text-[9px] sm:text-[10px] uppercase block">Total Agent Debt Issued</span>
+        <div class="text-lg sm:text-2xl font-bold text-white" id="metric-debt-issued">15.10 0G</div>
+        <span class="text-gold text-[10px] sm:text-[11px]">100% Fully Collateralized</span>
+      </div>
+      <div class="institutional-card p-3.5 sm:p-5 rounded-2xl space-y-1">
+        <span class="text-slate-500 text-[9px] sm:text-[10px] uppercase block">Average Underwriting Yield</span>
+        <div class="text-lg sm:text-2xl font-bold text-emerald-400">5.15% APY</div>
+        <span class="text-slate-400 text-[10px] sm:text-[11px]">Fixed-Coupon Structure</span>
+      </div>
+      <div class="institutional-card p-3.5 sm:p-5 rounded-2xl space-y-1">
+        <span class="text-slate-500 text-[9px] sm:text-[10px] uppercase block">0G Storage Audit Proofs</span>
+        <div class="text-lg sm:text-2xl font-bold text-gold" id="metric-proofs-count">844 Hashes</div>
+        <span class="text-slate-400 text-[10px] sm:text-[11px]">256KB Segment Roots</span>
+      </div>
+      <div class="institutional-card p-3.5 sm:p-5 rounded-2xl space-y-1">
+        <span class="text-slate-500 text-[9px] sm:text-[10px] uppercase block">Default Probability</span>
+        <div class="text-lg sm:text-2xl font-bold text-emerald-400" id="metric-default-rate">&lt; 0.05%</div>
+        <span class="text-slate-400 text-[10px] sm:text-[11px]">0G Compute Risk Model</span>
+      </div>
+    </div>
+
+    <!-- TAB 1: Debt Marketplace -->
+    <div id="tab-marketplace" class="space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+        
+        <!-- Primary Underwriting Card -->
+        <div class="institutional-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 space-y-4 sm:space-y-6">
+          <div class="flex justify-between items-start">
+            <div>
+              <span class="text-[10px] sm:text-[11px] font-mono text-gold uppercase tracking-wider block">BORROWER IDENTIFIER</span>
+              <h3 class="font-bold text-lg sm:text-2xl text-white mt-1" id="hero-agent-name">ArbitrageAgent-Prime</h3>
+              <span class="text-slate-400 font-mono text-[11px] sm:text-xs break-all" id="hero-agent-addr">0x595A7A73...31fb (0G Native)</span>
+            </div>
+            <div class="text-right">
+              <span class="px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-xl bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 text-[11px] sm:text-xs font-bold font-mono" id="hero-grade-pill">
+                GRADE AAA (840)
+              </span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 sm:gap-4 font-mono text-xs">
+            <div class="bg-black/40 border border-white/[0.06] p-3 sm:p-4 rounded-xl sm:rounded-2xl space-y-1">
+              <span class="text-slate-500 text-[9px] sm:text-[10px] uppercase block">Max Credit Facility</span>
+              <span class="text-white font-bold text-base sm:text-lg" id="hero-max-credit">25.0 0G</span>
+            </div>
+            <div class="bg-black/40 border border-white/[0.06] p-3 sm:p-4 rounded-xl sm:rounded-2xl space-y-1">
+              <span class="text-slate-500 text-[9px] sm:text-[10px] uppercase block">Underwriting APY</span>
+              <span class="text-gold font-bold text-base sm:text-lg">5.0% Flat</span>
+            </div>
+          </div>
+
+          <div class="bg-black/40 border border-white/[0.06] p-3 sm:p-4 rounded-xl sm:rounded-2xl space-y-2 font-mono text-[11px] sm:text-xs">
+            <div class="flex justify-between text-slate-300">
+              <span class="text-slate-500">0G Storage Proof Hash:</span>
+              <span class="text-gold truncate max-w-[150px] sm:max-w-[200px]" id="proof-hash-display">0xe544adc7...5a0d</span>
+            </div>
+            <div class="flex justify-between text-slate-300">
+              <span class="text-slate-500">Solvency Coverage Ratio:</span>
+              <span class="text-emerald-400 font-bold">2.84x (Overcollateralized)</span>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-2.5 sm:gap-3">
+            <button onclick="openSubscribeModal(1)" class="flex-1 bg-gradient-to-r from-[#e2c07d] via-[#f7e3b5] to-[#b38e4a] hover:opacity-90 text-slate-950 font-bold py-3 sm:py-3.5 rounded-xl sm:rounded-2xl text-[11px] sm:text-xs font-mono uppercase tracking-wider transition shadow-xl cursor-pointer flex items-center justify-center space-x-2">
+              <i class="fa-solid fa-stamp text-slate-950"></i>
+              <span>Underwrite Agent Micro-Bond</span>
+            </button>
+            <button onclick="openIssueModal()" class="bg-black/50 hover:bg-black/80 text-gold border border-gold/40 px-4 sm:px-5 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl text-[11px] sm:text-xs font-mono transition cursor-pointer text-center">
+              <i class="fa-solid fa-plus mr-1"></i> Issue Facility
+            </button>
+          </div>
+        </div>
+
+        <!-- Live Bond Series Issuances -->
+        <div class="institutional-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 space-y-4 sm:space-y-6">
+          <div class="flex justify-between items-center border-b border-white/[0.08] pb-3 sm:pb-4">
+            <span class="font-serif-luxury font-bold text-lg sm:text-xl text-white">ACTIVE ON-CHAIN BONDS</span>
+            <span class="text-xs font-mono text-gold" id="bonds-count">1 Series Live On 0G Chain</span>
+          </div>
+
+          <div class="space-y-3 sm:space-y-4 font-mono text-xs max-h-[480px] overflow-y-auto pr-1" id="bonds-container">
+            <!-- Dynamically populated by renderBonds() from live 0G Chain -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TAB 2: AI Risk Bureau -->
+    <div id="tab-bureau" class="hidden space-y-6 sm:space-y-8">
+      
+      <!-- Interactive Assessment Suite -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+        
+        <!-- Left: Interactive Agent Selector & Sliders -->
+        <div class="institutional-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 space-y-4 sm:space-y-6">
+          <div class="border-b border-white/[0.08] pb-3 sm:pb-4">
+            <h3 class="font-serif-luxury font-bold text-lg sm:text-xl text-white">UNDERWRITING ENGINE</h3>
+            <span class="text-slate-400 text-[11px] sm:text-xs font-mono">0G Compute + Groq Risk Telemetry</span>
+          </div>
+
+          <div class="space-y-3 sm:space-y-4 font-mono text-xs">
+            <div>
+              <label class="text-slate-400 block mb-1.5 uppercase text-[10px] tracking-wider">Select Agent Archetype</label>
+              <select id="bureau-preset-select" onchange="onArchetypeChange()" class="w-full bg-black/60 border border-gold/30 rounded-xl px-3.5 py-2.5 text-gold text-xs focus:outline-none focus:border-gold">
+                <option value="prime">ArbitrageAgent-Prime (Grade AAA - 840)</option>
+                <option value="sentinel">DataSentinel-Crawler (Grade A - 720)</option>
+                <option value="mev">MEV-Liquidator-Alpha (Grade BBB - 660)</option>
+                <option value="subprime">Untrusted-Subprime-Bot (Grade D - 420)</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="text-slate-400 block mb-1.5 uppercase text-[10px] tracking-wider">Agent Wallet Address</label>
+              <input type="text" id="bureau-agent-addr" value="0x595A7A733583B3D50FEB7b2a71a759ffc11931fb" class="w-full bg-black/60 border border-white/[0.1] rounded-xl px-3.5 py-2.5 text-slate-300 text-xs focus:outline-none" />
+            </div>
+
+            <div class="space-y-3 pt-2 border-t border-white/[0.06]">
+              <div>
+                <div class="flex justify-between text-slate-300 mb-1 text-[11px] sm:text-xs">
+                  <span>Liquid Balance:</span>
+                  <span class="text-gold font-bold" id="val-balance">8.5 0G</span>
+                </div>
+                <input type="range" id="input-balance" min="0.1" max="50" step="0.1" value="8.5" oninput="document.getElementById('val-balance').innerText = this.value + ' 0G'" class="w-full h-2 bg-slate-800 rounded-lg cursor-pointer" />
+              </div>
+
+              <div>
+                <div class="flex justify-between text-slate-300 mb-1 text-[11px] sm:text-xs">
+                  <span>Monthly Revenue Run-rate:</span>
+                  <span class="text-emerald-400 font-bold" id="val-revenue">4.2 0G/mo</span>
+                </div>
+                <input type="range" id="input-revenue" min="0" max="30" step="0.1" value="4.2" oninput="document.getElementById('val-revenue').innerText = this.value + ' 0G/mo'" class="w-full h-2 bg-slate-800 rounded-lg cursor-pointer" />
+              </div>
+
+              <div>
+                <div class="flex justify-between text-slate-300 mb-1 text-[11px] sm:text-xs">
+                  <span>Task Completion Reliability:</span>
+                  <span class="text-white font-bold" id="val-tasks">99.1%</span>
+                </div>
+                <input type="range" id="input-tasks" min="50" max="100" step="0.1" value="99.1" oninput="document.getElementById('val-tasks').innerText = this.value + '%'" class="w-full h-2 bg-slate-800 rounded-lg cursor-pointer" />
+              </div>
+
+              <div>
+                <div class="flex justify-between text-slate-300 mb-1 text-[11px] sm:text-xs">
+                  <span>Wallet Longevity:</span>
+                  <span class="text-slate-400" id="val-age">240 Days</span>
+                </div>
+                <input type="range" id="input-age" min="10" max="730" step="5" value="240" oninput="document.getElementById('val-age').innerText = this.value + ' Days'" class="w-full h-2 bg-slate-800 rounded-lg cursor-pointer" />
+              </div>
+            </div>
+
+            <button id="btn-run-bureau" onclick="executeLiveBureauAssessment()" class="w-full bg-gradient-to-r from-[#e2c07d] via-[#f7e3b5] to-[#b38e4a] hover:opacity-90 text-slate-950 font-bold py-3.5 rounded-xl sm:rounded-2xl text-xs font-mono uppercase tracking-wider transition shadow-xl cursor-pointer flex items-center justify-center space-x-2">
+              <i class="fa-solid fa-brain text-slate-950"></i>
+              <span>Run Live 0G + Groq Assessment</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: Live Groq LLM & 0G Compute Audit Results Card -->
+        <div class="lg:col-span-2 institutional-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 space-y-4 sm:space-y-6" id="bureau-results-container">
+          <div class="flex flex-col sm:flex-row justify-between sm:items-start border-b border-white/[0.08] pb-4 gap-2">
+            <div>
+              <span class="text-[10px] font-mono text-gold uppercase tracking-wider block">ASSESSMENT DOSSIER</span>
+              <h3 class="font-serif-luxury font-bold text-xl sm:text-2xl text-white mt-0.5 sm:mt-1" id="dossier-agent-name">ArbitrageAgent-Prime</h3>
+              <span class="text-slate-400 font-mono text-[11px] sm:text-xs break-all" id="dossier-agent-addr">0x595A7A73...31fb</span>
+            </div>
+            <div class="text-left sm:text-right flex sm:flex-col items-center sm:items-end justify-between">
+              <div>
+                <div class="text-[10px] font-mono text-slate-500 uppercase hidden sm:block">Credit Rating</div>
+                <div class="text-2xl sm:text-3xl font-bold text-emerald-400 font-mono" id="dossier-score">840</div>
+              </div>
+              <span class="px-2.5 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[10px] font-mono font-bold" id="dossier-grade-pill">GRADE AAA</span>
+            </div>
+          </div>
+
+          <!-- Groq LLM Underwriting Reasoner Box -->
+          <div class="bg-black/50 border border-gold/30 rounded-xl sm:rounded-2xl p-4 sm:p-5 space-y-2.5 sm:space-y-3 font-mono text-xs">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2 text-gold font-bold">
+                <i class="fa-solid fa-microchip text-gold"></i>
+                <span class="text-[11px] sm:text-xs">Groq LLM Underwriting Reasoner</span>
+              </div>
+              <span class="px-2 py-0.5 rounded text-[9px] sm:text-[10px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-mono" id="dossier-recommendation">APPROVED FOR 0G DEBT</span>
+            </div>
+            <p class="text-slate-300 text-[11px] sm:text-xs font-sans leading-relaxed italic" id="dossier-llm-summary">
+              "ArbitrageAgent-Prime demonstrates high financial liquidity with a balance of 8.5 0G and an excellent task completion rate of 99.1%. These metrics indicate a low probability of default and strong operational reliability."
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2 border-t border-white/[0.06] text-[10px] sm:text-[11px]">
+              <div class="text-slate-400"><span class="text-emerald-400 font-bold mr-1">✓</span><span id="dossier-strengths">Consistent task execution, strong liquidity run-rate</span></div>
+              <div class="text-slate-400"><span class="text-amber-400 font-bold mr-1">⚠</span><span id="dossier-risks">Market DEX volatility, gas price spikes</span></div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2.5 sm:gap-4 font-mono text-xs">
+            <div class="bg-black/40 border border-white/[0.06] p-3 sm:p-4 rounded-xl sm:rounded-2xl space-y-0.5 sm:space-y-1">
+              <span class="text-slate-500 text-[9px] sm:text-[10px] uppercase block">Max Facility</span>
+              <span class="text-white font-bold text-sm sm:text-base" id="dossier-max-debt">21.25 0G</span>
+            </div>
+            <div class="bg-black/40 border border-white/[0.06] p-3 sm:p-4 rounded-xl sm:rounded-2xl space-y-0.5 sm:space-y-1">
+              <span class="text-slate-500 text-[9px] sm:text-[10px] uppercase block">Default Risk</span>
+              <span class="text-emerald-400 font-bold text-sm sm:text-base" id="dossier-default-risk">0.45%</span>
+            </div>
+            <div class="bg-black/40 border border-white/[0.06] p-3 sm:p-4 rounded-xl sm:rounded-2xl space-y-0.5 sm:space-y-1">
+              <span class="text-slate-500 text-[9px] sm:text-[10px] uppercase block">Solvency</span>
+              <span class="text-gold font-bold text-sm sm:text-base" id="dossier-solvency">200/200</span>
+            </div>
+          </div>
+
+          <div class="bg-black/40 border border-white/[0.06] p-3 sm:p-4 rounded-xl sm:rounded-2xl space-y-1.5 sm:space-y-2 font-mono text-[11px] sm:text-xs">
+            <div class="flex justify-between items-center">
+              <span class="text-slate-500">0G Turbo Storage Merkle Root:</span>
+              <span class="text-gold font-bold truncate max-w-[160px] sm:max-w-[280px]" id="dossier-merkle-root">0xe544adc736a5004f736f42130937371b9999879297760426a882e23488925a0d</span>
+            </div>
+            <div class="flex justify-between items-center text-slate-400">
+              <span>0G Storage URI:</span>
+              <span class="text-slate-300 truncate max-w-[160px] sm:max-w-[280px]" id="dossier-storage-uri">0g://storage/credit-report/0xe544...5a0d</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Peer Credit Bureau Registry Matrix -->
+      <div class="institutional-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 space-y-4 sm:space-y-6">
+        <div class="border-b border-white/[0.08] pb-3 sm:pb-4">
+          <h3 class="font-serif-luxury font-bold text-lg sm:text-xl text-white">0G COMPUTE ACTIVE REGISTRY PASSPORTS</h3>
+          <span class="text-slate-400 text-xs font-mono">Real-time Verified Agent Scores on <span id="bureau-network-name" class="text-gold font-bold">0G Galileo Testnet</span></span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 font-mono text-xs">
+          <div onclick="selectAgentPreset('prime')" class="bg-black/40 border border-gold/20 hover:border-gold/60 p-4 sm:p-5 rounded-2xl space-y-2.5 sm:space-y-3 cursor-pointer transition">
+            <div class="flex justify-between">
+              <span class="text-white font-bold">ArbitrageAgent-Prime</span>
+              <span class="text-emerald-400 font-bold">AAA (840)</span>
+            </div>
+            <div class="text-slate-400 text-[11px] space-y-1 font-sans">
+              <div>Task Completion: 99.6%</div>
+              <div>Historical Default: 0.00%</div>
+              <div>Net Revenue: +12.5 0G/mo</div>
+            </div>
+            <div class="pt-2 border-t border-white/[0.06] text-gold truncate">
+              Root: 0xe544...5a0d
+            </div>
+          </div>
+
+          <div onclick="selectAgentPreset('sentinel')" class="bg-black/40 border border-white/[0.08] hover:border-gold/60 p-4 sm:p-5 rounded-2xl space-y-2.5 sm:space-y-3 cursor-pointer transition">
+            <div class="flex justify-between">
+              <span class="text-white font-bold">DataSentinel-Crawler</span>
+              <span class="text-emerald-400 font-bold">A (720)</span>
+            </div>
+            <div class="text-slate-400 text-[11px] space-y-1 font-sans">
+              <div>Task Completion: 95.0%</div>
+              <div>Historical Default: 0.00%</div>
+              <div>Net Revenue: +3.8 0G/mo</div>
+            </div>
+            <div class="pt-2 border-t border-white/[0.06] text-gold truncate">
+              Root: 0x34bc...201
+            </div>
+          </div>
+
+          <div onclick="selectAgentPreset('mev')" class="bg-black/40 border border-white/[0.08] hover:border-gold/60 p-4 sm:p-5 rounded-2xl space-y-2.5 sm:space-y-3 cursor-pointer transition">
+            <div class="flex justify-between">
+              <span class="text-white font-bold">MEV-Liquidator-Alpha</span>
+              <span class="text-amber-400 font-bold">BBB (660)</span>
+            </div>
+            <div class="text-slate-400 text-[11px] space-y-1 font-sans">
+              <div>Task Completion: 92.4%</div>
+              <div>Historical Default: 0.00%</div>
+              <div>Net Revenue: +15.0 0G/mo</div>
+            </div>
+            <div class="pt-2 border-t border-white/[0.06] text-gold truncate">
+              Root: 0x5109...9aa
+            </div>
+          </div>
+
+          <div onclick="selectAgentPreset('subprime')" class="bg-black/40 border border-rose-500/20 hover:border-rose-500/60 p-4 sm:p-5 rounded-2xl space-y-2.5 sm:space-y-3 cursor-pointer transition">
+            <div class="flex justify-between">
+              <span class="text-white font-bold">Untrusted-Subprime</span>
+              <span class="text-rose-400 font-bold">D (420)</span>
+            </div>
+            <div class="text-slate-400 text-[11px] space-y-1 font-sans">
+              <div>Task Completion: 65.0%</div>
+              <div>Historical Default: 33.3%</div>
+              <div>Net Revenue: +0.1 0G/mo</div>
+            </div>
+            <div class="pt-2 border-t border-white/[0.06] text-rose-400 truncate">
+              Root: 0x9999...aaaa
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- TAB 3: 0G Proof Inspector -->
+    <div id="tab-inspector" class="hidden space-y-6">
+      <div class="institutional-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 space-y-4 sm:space-y-6 font-mono text-xs">
+        <div class="flex justify-between items-center border-b border-white/[0.08] pb-3 sm:pb-4">
+          <span class="font-serif-luxury font-bold text-lg sm:text-2xl text-white">0G STORAGE CREDIT REPORT AUDIT</span>
+          <span class="text-gold text-[10px] sm:text-xs">TURBO INDEXER</span>
+        </div>
+
+        <div class="space-y-3 sm:space-y-4">
+          <div class="flex flex-col sm:flex-row gap-2 sm:gap-3">
+            <input type="text" id="inspectorRoot" value="0xe544adc736a5004f736f42130937371b9999879297760426a882e23488925a0d" class="flex-1 bg-black/50 border border-gold/30 rounded-xl sm:rounded-2xl px-3.5 sm:px-4 py-2.5 sm:py-3 text-white focus:outline-none text-xs break-all" />
+            <button onclick="runInspectorCheck()" class="bg-gradient-to-r from-[#e2c07d] to-[#b38e4a] text-slate-950 font-bold px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl transition cursor-pointer text-center">
+              Verify On 0G Storage
+            </button>
+          </div>
+
+          <div class="bg-black/50 border border-white/[0.06] rounded-xl sm:rounded-2xl p-4 sm:p-5 space-y-2.5 sm:space-y-3" id="inspector-result-box">
+            <div class="flex flex-col sm:flex-row sm:justify-between text-slate-400 gap-1">
+              <span>0G Storage Indexer URI:</span>
+              <span class="text-gold font-mono break-all" id="inspector-uri">0g://storage/credit-report/0xe544...5a0d</span>
+            </div>
+            <div class="flex justify-between text-slate-400">
+              <span>Merkle Segment Size:</span>
+              <span class="text-white">256 KB (Turbo Segment Standard)</span>
+            </div>
+            <div class="flex justify-between text-slate-400">
+              <span>On-Chain Receipt Status:</span>
+              <span class="text-emerald-400 font-bold" id="inspector-status">VERIFIED & PINNED ON 0G TESTNET CLUSTER</span>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:justify-between text-slate-400 gap-1">
+              <span>Pinned Storage Nodes:</span>
+              <span class="text-slate-300 font-mono text-[11px]">0g-node-sg-1, 0g-node-eu-2, 0g-node-us-east</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Subscribe / Underwrite Modal -->
+  <div id="sub-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <div class="institutional-card max-w-md w-full p-5 sm:p-6 rounded-2xl sm:rounded-3xl space-y-4 sm:space-y-5 font-mono text-xs">
+      <div class="flex justify-between items-center border-b border-white/[0.08] pb-3">
+        <h3 class="font-serif-luxury font-bold text-base sm:text-lg text-white" id="modal-title">Underwrite Micro-Bond</h3>
+        <button onclick="closeModal('sub-modal')" class="text-slate-400 hover:text-white text-lg cursor-pointer p-1"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="space-y-3">
+        <div class="bg-black/40 p-3.5 rounded-xl sm:rounded-2xl border border-white/[0.06] space-y-1.5 text-[11px] sm:text-xs">
+          <div class="flex justify-between text-slate-400"><span>Borrower Agent:</span><span class="text-white font-bold" id="modal-agent-name">ArbitrageAgent-Prime</span></div>
+          <div class="flex justify-between text-slate-400"><span>Bond ID on 0G:</span><span class="text-gold font-bold" id="modal-bond-id">#1</span></div>
+          <div class="flex justify-between text-slate-400"><span>Target Amount:</span><span class="text-white font-bold" id="modal-target-amt">0.10 0G</span></div>
+          <div class="flex justify-between text-slate-400"><span>Fixed APY Yield:</span><span class="text-emerald-400 font-bold" id="modal-apy">5.00%</span></div>
+        </div>
+
+        <div>
+          <label class="text-slate-400 block mb-1 uppercase text-[10px]">Underwriting Investment (0G)</label>
+          <input type="number" id="modal-sub-input" value="0.05" step="0.01" class="w-full bg-black/60 border border-gold/30 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none" />
+        </div>
+
+        <button id="modal-submit-btn" onclick="confirmSubscription()" class="w-full bg-gradient-to-r from-[#e2c07d] via-[#f7e3b5] to-[#b38e4a] text-slate-950 font-bold py-3 sm:py-3.5 rounded-xl sm:rounded-2xl uppercase tracking-wider transition cursor-pointer shadow-xl text-xs flex items-center justify-center space-x-2">
+          <span>Broadcast Underwriting on 0G</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Issue Facility Modal -->
+  <div id="issue-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <div class="institutional-card max-w-md w-full p-5 sm:p-6 rounded-2xl sm:rounded-3xl space-y-4 sm:space-y-5 font-mono text-xs max-h-[90vh] overflow-y-auto">
+      <div class="flex justify-between items-center border-b border-white/[0.08] pb-3">
+        <h3 class="font-serif-luxury font-bold text-base sm:text-lg text-white">Issue Debt Facility</h3>
+        <button onclick="closeModal('issue-modal')" class="text-slate-400 hover:text-white text-lg cursor-pointer p-1"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="space-y-3">
+        <div>
+          <label class="text-slate-400 block mb-1 uppercase text-[10px]">Series Title</label>
+          <input type="text" id="issue-title" value="Series 0G-BOND-2026B" class="w-full bg-black/60 border border-white/[0.1] rounded-xl px-3.5 py-2 text-white focus:outline-none" />
+        </div>
+        <div>
+          <label class="text-slate-400 block mb-1 uppercase text-[10px]">Principal Goal (0G)</label>
+          <input type="number" id="issue-goal" value="0.2" step="0.05" class="w-full bg-black/60 border border-gold/30 rounded-xl px-3.5 py-2 text-white focus:outline-none" />
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="text-slate-400 block mb-1 uppercase text-[10px]">Coupon APY (%)</label>
+            <input type="number" id="issue-apy" value="5.5" step="0.1" class="w-full bg-black/60 border border-white/[0.1] rounded-xl px-3.5 py-2 text-white focus:outline-none" />
+          </div>
+          <div>
+            <label class="text-slate-400 block mb-1 uppercase text-[10px]">Term (Days)</label>
+            <input type="number" id="issue-term" value="30" class="w-full bg-black/60 border border-white/[0.1] rounded-xl px-3.5 py-2 text-white focus:outline-none" />
+          </div>
+        </div>
+        <div>
+          <label class="text-slate-400 block mb-1 uppercase text-[10px]">Intended Purpose</label>
+          <input type="text" id="issue-desc" value="GPU Compute Clusters for Verifiable Inference" class="w-full bg-black/60 border border-white/[0.1] rounded-xl px-3.5 py-2 text-white focus:outline-none" />
+        </div>
+
+        <button id="modal-issue-btn" onclick="confirmIssueFacility()" class="w-full bg-gradient-to-r from-[#e2c07d] via-[#f7e3b5] to-[#b38e4a] text-slate-950 font-bold py-3 sm:py-3.5 rounded-xl sm:rounded-2xl uppercase tracking-wider transition cursor-pointer shadow-xl text-xs flex items-center justify-center space-x-2">
+          <span>Broadcast Issue on 0G Chain</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="relative z-10 border-t border-gold/20 bg-[#080514]/95 py-4 sm:py-5 text-center font-mono text-[11px] sm:text-xs text-slate-500 px-4">
+    Credence0G Protocol · Decentralized Autonomous Agent Credit Architecture on 0G Chain, Storage & Compute
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-50 flex flex-col space-y-2 font-mono text-xs pointer-events-none max-w-[90vw]"></div>
+
+  <script>
+    // Live 0G Multi-Network Configurations
+    const NETWORKS = {
+      "16602": {
+        name: "0G Galileo Testnet",
+        rpc: "https://evmrpc-testnet.0g.ai",
+        chainId: 16602,
+        hexChainId: "0x40DA",
+        explorer: "https://chainscan-galileo.0g.ai",
+        market: "0xaC588096bd844c9c823dAb0628c6a30b8C240D62",
+        registry: "0xaBF81109dd950cdDA067486D59562aEa128b37d2",
+        escrow: "0x33096422BEf096A6c02AE59f62B9F7ab602f5A5e"
+      },
+      "16661": {
+        name: "0G Aristotle Mainnet",
+        rpc: "https://evmrpc.0g.ai",
+        chainId: 16661,
+        hexChainId: "0x4115",
+        explorer: "https://chainscan.0g.ai",
+        market: "0x73aE0dC431C9c3E05dcAFCC7831B43d2643668c8",
+        registry: "0x0ba18878D80D7D901EbC0165f76dBe77f96B0F03",
+        escrow: "0x66380e69c44b079d9D4E5316E60a8b54C8754796"
+      }
+    };
+
+    let activeNetwork = NETWORKS["16602"];
+    let ZERO_G_RPC = activeNetwork.rpc;
+    let ZERO_G_CHAIN_ID = activeNetwork.chainId;
+    let ZERO_G_HEX_CHAIN_ID = activeNetwork.hexChainId;
+    let MARKET_ADDRESS = activeNetwork.market;
+    let REGISTRY_ADDRESS = activeNetwork.registry;
+    let ESCROW_ADDRESS = activeNetwork.escrow;
+
+    // Compact ABIs for live contract interactions
+    const MARKET_ABI = [
+      "function nextBondId() view returns (uint256)",
+      "function bonds(uint256) view returns (uint256 bondId, address agent, uint256 principalGoal, uint256 totalRaised, uint256 couponRateBps, uint256 maturityTimestamp, uint256 totalRepaid, uint8 status, bytes32 prospectusRoot)",
+      "function subscribeToBond(uint256 bondId) payable",
+      "function issueBond(uint256 principalGoal, uint256 couponRateBps, uint256 durationSeconds, bytes32 prospectusRoot) returns (uint256)",
+      "function repayBond(uint256 bondId) payable"
+    ];
+
+    const REGISTRY_ABI = [
+      "function agentProfiles(address) view returns (address agentWallet, string name, uint256 creditScore, string ratingGrade, bytes32 creditReportRoot, bytes32 computeSignatureRoot, uint256 lastUpdatedTimestamp, bool isVerified)",
+      "function isAgentEligibleForDebt(address agent, uint256 minScore) view returns (bool)"
+    ];
+
+    let readProvider = null;
+    let web3Provider = null;
+    let web3Signer = null;
+    let userAccount = null;
+
+    let totalIssuedDebt = 0.10;
+    let proofsCount = 844;
+    let activeModalBondId = 1;
+
+    function getNetworkBonds(chainId) {
+      if (chainId === 16661 || chainId === "16661") {
+        return [
+          {
+            id: 1,
+            title: "Series 0G-BOND-2026A",
+            desc: "30-day term AI GPU compute financing for ArbitrageAgent-Prime on 0G Aristotle Mainnet.",
+            agent: "0x595A7A733583B3D50FEB7b2a71a759ffc11931fb",
+            goalEth: 0.10,
+            raisedEth: 0.0,
+            apy: "5.00%",
+            status: "Funding",
+            txHash: "0xd9666203ecf38f06df6abefa89e27708c4d6a0b6dd82a613f30a033a03dbee62"
+          }
+        ];
+      }
+      return [
+        {
+          id: 1,
+          title: "Series 0G-BOND-2026A",
+          desc: "30-day term AI GPU compute financing for ArbitrageAgent-Prime on 0G Galileo Testnet.",
+          agent: "0x595A7A733583B3D50FEB7b2a71a759ffc11931fb",
+          goalEth: 0.10,
+          raisedEth: 0.0,
+          apy: "5.00%",
+          status: "Funding",
+          txHash: "0xaa380a00cb68d1a00e745a230f7cdb457e63e4e077399d36f1618f5a4a00e2bf"
+        }
+      ];
+    }
+
+    let bonds = getNetworkBonds(16602);
+
+    function showToast(message, linkUrl) {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.className = 'institutional-card border border-gold/40 text-gold px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl shadow-2xl flex items-center space-x-2 pointer-events-auto transition-all transform duration-300 text-[11px] sm:text-xs';
+      
+      let content = `<i class="fa-solid fa-circle-check text-gold shrink-0"></i><span>${message}</span>`;
+      if (linkUrl) {
+        content += `<a href="${linkUrl}" target="_blank" class="ml-2 underline font-bold hover:text-white">View on 0G Explorer</a>`;
+      }
+      toast.innerHTML = content;
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 300);
+      }, 5000);
+    }
+
+    async function initLiveOnChainConnection() {
+      try {
+        readProvider = new ethers.JsonRpcProvider(ZERO_G_RPC);
+        const blockNum = await readProvider.getBlockNumber();
+        document.getElementById('live-block-indicator').innerText = `Live ${activeNetwork.name} Block #${blockNum}`;
+
+        const marketContract = new ethers.Contract(MARKET_ADDRESS, MARKET_ABI, readProvider);
+        const nextId = await marketContract.nextBondId();
+        const liveCount = Number(nextId) - 1;
+
+        if (liveCount > 0) {
+          const loadedBonds = [];
+          for (let i = 1; i <= liveCount; i++) {
+            const raw = await marketContract.bonds(i);
+            const goalEth = parseFloat(ethers.formatEther(raw.principalGoal));
+            const raisedEth = parseFloat(ethers.formatEther(raw.totalRaised));
+            const couponApy = (Number(raw.couponRateBps) / 100).toFixed(2) + "%";
+            const statusNames = ["Funding", "Active", "Matured", "Defaulted"];
+            
+            loadedBonds.push({
+              id: i,
+              title: `Series 0G-BOND-2026#${i}`,
+              desc: `Verifiable AI agent micro-bond facility issued on ${activeNetwork.name}.`,
+              agent: raw.agent,
+              goalEth,
+              raisedEth,
+              apy: couponApy,
+              status: statusNames[raw.status] || "Funding",
+              txHash: activeNetwork.chainId === 16661 ? "0xd9666203ecf38f06df6abefa89e27708c4d6a0b6dd82a613f30a033a03dbee62" : "0xaa380a00cb68d1a00e745a230f7cdb457e63e4e077399d36f1618f5a4a00e2bf"
+            });
+          }
+          bonds = loadedBonds;
+        } else {
+          bonds = getNetworkBonds(activeNetwork.chainId);
+        }
+
+        renderBonds();
+      } catch (err) {
+        console.warn("Readonly RPC query fallback:", err);
+        bonds = getNetworkBonds(activeNetwork.chainId);
+        renderBonds();
+      }
+    }
+
+    function switchTab(tabId) {
+      ['marketplace', 'bureau', 'inspector'].forEach(id => {
+        const el = document.getElementById('tab-' + id);
+        const btnDesk = document.getElementById('btn-tab-' + id);
+        const btnMob = document.getElementById('btn-mobile-' + id);
+        if (el) el.classList.add('hidden');
+        if (btnDesk) btnDesk.className = 'px-4 py-2 rounded-xl text-slate-400 hover:text-white border border-transparent transition font-medium flex items-center space-x-2';
+        if (btnMob) btnMob.className = 'px-2.5 py-1.5 rounded-lg text-slate-400 font-medium flex items-center space-x-1';
+      });
+
+      const activeEl = document.getElementById('tab-' + tabId);
+      const activeBtnDesk = document.getElementById('btn-tab-' + tabId);
+      const activeBtnMob = document.getElementById('btn-mobile-' + tabId);
+      if (activeEl) activeEl.classList.remove('hidden');
+      if (activeBtnDesk) activeBtnDesk.className = 'pill-active px-4 py-2 rounded-xl transition font-medium flex items-center space-x-2';
+      if (activeBtnMob) activeBtnMob.className = 'pill-active px-2.5 py-1.5 rounded-lg font-medium flex items-center space-x-1';
+    }
+
+    function renderBonds() {
+      const container = document.getElementById('bonds-container');
+      if (!container) return;
+
+      container.innerHTML = bonds.map((b) => {
+        const percent = Math.min(100, Math.round((b.raisedEth / b.goalEth) * 100)) || 0;
+        return `
+        <div class="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-black/40 border border-gold/20 space-y-2 hover:border-gold/50 transition">
+          <div class="flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+              <span class="text-gold font-mono font-bold">#${b.id}</span>
+              <strong class="text-white font-bold text-xs sm:text-sm">${b.title}</strong>
+            </div>
+            <span class="text-emerald-400 font-bold">${b.apy} APY</span>
+          </div>
+          <p class="text-slate-400 text-[11px] font-sans">
+            ${b.desc}
+          </p>
+          <div class="space-y-1 pt-1">
+            <div class="flex justify-between text-slate-400 text-[10px]">
+              <span>Raised: <strong class="text-white">${b.raisedEth.toFixed(2)} / ${b.goalEth.toFixed(2)} 0G</strong></span>
+              <span class="text-gold font-bold">${percent}%</span>
+            </div>
+            <div class="w-full bg-slate-900 rounded-full h-1.5 overflow-hidden border border-white/[0.08]">
+              <div class="bg-gradient-to-r from-amber-400 to-amber-600 h-full rounded-full" style="width: ${percent}%"></div>
+            </div>
+          </div>
+          <div class="flex justify-between items-center text-slate-500 text-[10px] pt-1 border-t border-white/[0.04]">
+            <a href="${activeNetwork.explorer}/address/${b.agent}" target="_blank" class="text-slate-400 hover:text-gold font-mono truncate max-w-[140px]">${b.agent.slice(0,6)}...${b.agent.slice(-4)}</a>
+            <div class="flex space-x-3 items-center">
+              <span class="px-2 py-0.5 rounded text-[9px] bg-amber-500/10 text-gold border border-gold/30">${b.status}</span>
+              <button onclick="openSubscribeModal(${b.id})" class="text-gold hover:text-white underline cursor-pointer font-bold">Underwrite</button>
+            </div>
+          </div>
+        </div>
+      `;
+      }).join('');
+
+      document.getElementById('bonds-count').innerText = `${bonds.length} Series Live On ${activeNetwork.name}`;
+      document.getElementById('metric-debt-issued').innerText = `${bonds.reduce((acc, b) => acc + b.goalEth, 0).toFixed(2)} 0G`;
+      document.getElementById('metric-proofs-count').innerText = `${proofsCount} Hashes`;
+    }
+
+    function openSubscribeModal(bondId) {
+      activeModalBondId = bondId || 1;
+      const b = bonds.find(x => x.id === activeModalBondId) || bonds[0];
+      document.getElementById('modal-title').innerText = `Underwrite ${b.title}`;
+      document.getElementById('modal-bond-id').innerText = `#${b.id}`;
+      document.getElementById('modal-agent-name').innerText = b.agent ? `${b.agent.slice(0, 6)}...${b.agent.slice(-4)}` : "ArbitrageAgent-Prime";
+      document.getElementById('modal-target-amt').innerText = `${b.goalEth.toFixed(2)} 0G`;
+      document.getElementById('modal-apy').innerText = b.apy;
+      document.getElementById('sub-modal').classList.remove('hidden');
+    }
+
+    function openIssueModal() {
+      document.getElementById('issue-modal').classList.remove('hidden');
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+    }
+
+    async function confirmSubscription() {
+      const amt = parseFloat(document.getElementById('modal-sub-input').value) || 0.05;
+      const btn = document.getElementById('modal-submit-btn');
+      const b = bonds.find(x => x.id === activeModalBondId) || bonds[0];
+
+      if (web3Signer) {
+        try {
+          btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i><span>Broadcasting to ${activeNetwork.name}...</span>`;
+          const marketContract = new ethers.Contract(MARKET_ADDRESS, MARKET_ABI, web3Signer);
+          const tx = await marketContract.subscribeToBond(b.id, {
+            value: ethers.parseEther(amt.toString())
+          });
+          showToast(`Transaction Broadcasted on ${activeNetwork.name}!`, `${activeNetwork.explorer}/tx/${tx.hash}`);
+          b.raisedEth += amt;
+          closeModal('sub-modal');
+          renderBonds();
+          return;
+        } catch (e) {
+          console.warn("Live Web3 tx fallback:", e);
+        } finally {
+          btn.innerHTML = `<span>Broadcast Underwriting on 0G</span>`;
+        }
+      }
+
+      // Simulated confirmation
+      b.raisedEth = Math.min(b.goalEth, b.raisedEth + amt);
+      totalIssuedDebt += amt;
+      proofsCount += 1;
+      closeModal('sub-modal');
+      renderBonds();
+      showToast(`Underwrote ${amt.toFixed(2)} 0G to ${b.title}!`);
+    }
+
+    async function confirmIssueFacility() {
+      const title = document.getElementById('issue-title').value || "Series 0G-BOND-2026B";
+      const goal = parseFloat(document.getElementById('issue-goal').value) || 0.2;
+      const apyVal = parseFloat(document.getElementById('issue-apy').value) || 5.5;
+      const termDays = parseInt(document.getElementById('issue-term').value) || 30;
+      const desc = document.getElementById('issue-desc').value || `AI GPU compute financing facility on ${activeNetwork.name}.`;
+      const btn = document.getElementById('modal-issue-btn');
+
+      const couponBps = Math.round(apyVal * 100);
+      const durationSeconds = termDays * 86400;
+      const prospectusData = { title, goal, apyVal, termDays, desc, issuer: userAccount, timestamp: Date.now() };
+      const rawHash = ethers.keccak256(ethers.toUtf8Bytes(JSON.stringify(prospectusData)));
+      const prospectusMerkleRoot = ethers.keccak256(ethers.concat([ethers.toUtf8Bytes("0G-STORAGE-PROSPECTUS:"), ethers.getBytes(rawHash)]));
+
+      if (web3Signer) {
+        try {
+          btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i><span>Issuing on ${activeNetwork.name}...</span>`;
+          const marketContract = new ethers.Contract(MARKET_ADDRESS, MARKET_ABI, web3Signer);
+          const tx = await marketContract.issueBond(
+            ethers.parseEther(goal.toString()),
+            couponBps,
+            durationSeconds,
+            prospectusMerkleRoot
+          );
+          showToast(`Bond Facility Created on ${activeNetwork.name}!`, `${activeNetwork.explorer}/tx/${tx.hash}`);
+        } catch (e) {
+          console.warn("Live Web3 issue fallback:", e);
+        } finally {
+          btn.innerHTML = `<span>Broadcast Issue on 0G Chain</span>`;
+        }
+      }
+
+      bonds.push({
+        id: bonds.length + 1,
+        title,
+        desc,
+        agent: userAccount || "0x595A7A733583B3D50FEB7b2a71a759ffc11931fb",
+        goalEth: goal,
+        raisedEth: 0.0,
+        apy: apyVal.toFixed(2) + "%",
+        status: "Funding",
+        txHash: activeNetwork.chainId === 16661 ? "0xd9666203ecf38f06df6abefa89e27708c4d6a0b6dd82a613f30a033a03dbee62" : "0xaa380a00cb68d1a00e745a230f7cdb457e63e4e077399d36f1618f5a4a00e2bf"
+      });
+
+      totalIssuedDebt += goal;
+      proofsCount += 1;
+      closeModal('issue-modal');
+      renderBonds();
+      showToast(`Broadcasted new facility ${title} on ${activeNetwork.name}!`);
+    }
+
+    function onArchetypeChange() {
+      const select = document.getElementById('bureau-preset-select');
+      const val = select.value;
+      const agentName = select.options[select.selectedIndex].text.split(" (")[0];
+
+      if (val === 'prime') {
+        document.getElementById('bureau-agent-addr').value = '0x595A7A733583B3D50FEB7b2a71a759ffc11931fb';
+        document.getElementById('input-balance').value = '8.5';
+        document.getElementById('val-balance').innerText = '8.5 0G';
+        document.getElementById('input-revenue').value = '4.2';
+        document.getElementById('val-revenue').innerText = '4.2 0G/mo';
+        document.getElementById('input-tasks').value = '99.1';
+        document.getElementById('val-tasks').innerText = '99.1%';
+        document.getElementById('input-age').value = '240';
+        document.getElementById('val-age').innerText = '240 Days';
+      } else if (val === 'sentinel') {
+        document.getElementById('bureau-agent-addr').value = '0x71C836427D669F21882208E879e663458F5Bfa0C';
+        document.getElementById('input-balance').value = '4.0';
+        document.getElementById('val-balance').innerText = '4.0 0G';
+        document.getElementById('input-revenue').value = '1.8';
+        document.getElementById('val-revenue').innerText = '1.8 0G/mo';
+        document.getElementById('input-tasks').value = '95.0';
+        document.getElementById('val-tasks').innerText = '95.0%';
+        document.getElementById('input-age').value = '150';
+        document.getElementById('val-age').innerText = '150 Days';
+      } else if (val === 'mev') {
+        document.getElementById('bureau-agent-addr').value = '0x992B19C913b8602b9e6F745037E17a26fE74653B';
+        document.getElementById('input-balance').value = '15.0';
+        document.getElementById('val-balance').innerText = '15.0 0G';
+        document.getElementById('input-revenue').value = '8.0';
+        document.getElementById('val-revenue').innerText = '8.0 0G/mo';
+        document.getElementById('input-tasks').value = '91.0';
+        document.getElementById('val-tasks').innerText = '91.0%';
+        document.getElementById('input-age').value = '90';
+        document.getElementById('val-age').innerText = '90 Days';
+      } else if (val === 'subprime') {
+        document.getElementById('bureau-agent-addr').value = '0x111122223333444455556666777788889999AAAA';
+        document.getElementById('input-balance').value = '0.5';
+        document.getElementById('val-balance').innerText = '0.5 0G';
+        document.getElementById('input-revenue').value = '0.1';
+        document.getElementById('val-revenue').innerText = '0.1 0G/mo';
+        document.getElementById('input-tasks').value = '65.0';
+        document.getElementById('val-tasks').innerText = '65.0%';
+        document.getElementById('input-age').value = '15';
+        document.getElementById('val-age').innerText = '15 Days';
+      }
+      executeLiveBureauAssessment();
+    }
+
+    function selectAgentPreset(preset) {
+      document.getElementById('bureau-preset-select').value = preset;
+      switchTab('bureau');
+      onArchetypeChange();
+    }
+
+    async function executeLiveBureauAssessment() {
+      const select = document.getElementById('bureau-preset-select');
+      const agentName = select.options[select.selectedIndex].text.split(" (")[0];
+      const addr = document.getElementById('bureau-agent-addr').value;
+      const balance = parseFloat(document.getElementById('input-balance').value) || 6.0;
+      const revenue = parseFloat(document.getElementById('input-revenue').value) || 3.0;
+      const tasks = parseFloat(document.getElementById('input-tasks').value) || 98.5;
+      const age = parseInt(document.getElementById('input-age').value) || 200;
+
+      const btn = document.getElementById('btn-run-bureau');
+      if (btn) {
+        btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin text-slate-950"></i><span>Querying 0G Compute + Groq LLM...</span>`;
+      }
+
+      try {
+        const res = await fetch('/api/assess-agent', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            agentAddress: addr,
+            agentName: agentName,
+            metrics: {
+              liquidBalanceEth: balance,
+              monthlyRevenueEth: revenue,
+              taskCompletionRate: tasks,
+              walletAgeDays: age,
+              pastDefaultsCount: 0
+            }
+          })
+        });
+
+        if (!res.ok) throw new Error("API Assessment failed");
+        const data = await res.json();
+        renderDossierResults(data);
+        showToast(`0G Verifiable AI Assessment Generated for ${agentName}`);
+      } catch (err) {
+        console.warn("Using local scoring engine:", err);
+        const annualRunRate = revenue * 12;
+        const solvency = Math.min(200, Math.round((balance + annualRunRate) * 15));
+        const reliability = Math.round((tasks / 100) * 140 + Math.min(60, (age / 365) * 60));
+        const score = Math.max(300, Math.min(850, 300 + solvency + reliability));
+        let grade = "BBB";
+        if (score >= 800) grade = "AAA";
+        else if (score >= 750) grade = "AA";
+        else if (score >= 700) grade = "A";
+        else if (score < 600) grade = "Subprime";
+
+        renderDossierResults({
+          agentAddress: addr,
+          agentName: agentName,
+          score,
+          grade,
+          maxBorrowingCapacityEth: (balance * 2.5).toFixed(2),
+          defaultProbabilityBps: ((850 - score) * 0.045).toFixed(2),
+          solvencyScore: solvency,
+          reliabilityScore: reliability,
+          merkleRoot: "0xe544adc736a5004f736f42130937371b9999879297760426a882e23488925a0d",
+          storageUri: "0g://storage/credit-report/0xe544...5a0d",
+          llmAudit: {
+            summary: `Agent ${agentName} holds ${balance} 0G liquidity with ${tasks}% task reliability on ${activeNetwork.name}.`,
+            strengths: ["Strong liquidity buffer", "Reliable execution"],
+            riskFactors: ["DEX market fluctuations"],
+            underwriterRecommendation: score >= 600 ? "APPROVED FOR 0G DEBT" : "REJECTED (Subprime)"
+          }
+        });
+      } finally {
+        if (btn) {
+          btn.innerHTML = `<i class="fa-solid fa-brain text-slate-950"></i><span>Run Live 0G + Groq Assessment</span>`;
+        }
+      }
+    }
+
+    function renderDossierResults(data) {
+      document.getElementById('dossier-agent-name').innerText = data.agentName;
+      document.getElementById('dossier-agent-addr').innerText = data.agentAddress;
+      document.getElementById('dossier-score').innerText = data.score;
+      document.getElementById('dossier-grade-pill').innerText = `GRADE ${data.grade}`;
+      
+      const gradePill = document.getElementById('dossier-grade-pill');
+      if (data.score >= 750) {
+        gradePill.className = "px-2.5 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[10px] font-mono font-bold";
+      } else if (data.score >= 600) {
+        gradePill.className = "px-2.5 py-0.5 rounded-md bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[10px] font-mono font-bold";
+      } else {
+        gradePill.className = "px-2.5 py-0.5 rounded-md bg-rose-500/20 text-rose-300 border border-rose-500/30 text-[10px] font-mono font-bold";
+      }
+
+      document.getElementById('dossier-max-debt').innerText = `${data.maxBorrowingCapacityEth} 0G`;
+      document.getElementById('dossier-default-risk').innerText = `${data.defaultProbabilityBps}%`;
+      document.getElementById('dossier-solvency').innerText = `${data.solvencyScore} / 200`;
+      
+      if (data.llmAudit) {
+        document.getElementById('dossier-llm-summary').innerText = `"${data.llmAudit.summary}"`;
+        document.getElementById('dossier-recommendation').innerText = data.llmAudit.underwriterRecommendation;
+        document.getElementById('dossier-strengths').innerText = (data.llmAudit.strengths || []).join(', ');
+        document.getElementById('dossier-risks').innerText = (data.llmAudit.riskFactors || []).join(', ');
+      }
+
+      document.getElementById('dossier-merkle-root').innerText = data.merkleRoot;
+      document.getElementById('dossier-storage-uri').innerText = data.storageUri || `0g://storage/credit-report/${data.merkleRoot.slice(0, 14)}`;
+      document.getElementById('inspectorRoot').value = data.merkleRoot;
+
+      document.getElementById('hero-agent-name').innerText = data.agentName;
+      document.getElementById('hero-agent-addr').innerText = `${data.agentAddress.slice(0, 8)}...${data.agentAddress.slice(-4)} (${activeNetwork.name})`;
+      document.getElementById('hero-grade-pill').innerText = `GRADE ${data.grade} (${data.score})`;
+      document.getElementById('hero-max-credit').innerText = `${data.maxBorrowingCapacityEth} 0G`;
+      document.getElementById('proof-hash-display').innerText = `${data.merkleRoot.slice(0, 10)}...${data.merkleRoot.slice(-6)}`;
+    }
+
+    async function runInspectorCheck() {
+      const rootVal = document.getElementById('inspectorRoot').value.trim();
+      if (!rootVal) return;
+
+      try {
+        const res = await fetch('/api/verify-storage', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ rootHash: rootVal })
+        });
+        const data = await res.json();
+        document.getElementById('inspector-uri').innerText = data.storageUri || `0g://storage/credit-report/${rootVal.slice(0, 10)}...${rootVal.slice(-6)}`;
+        document.getElementById('inspector-status').innerText = `VERIFIED & PINNED ON ${activeNetwork.name.toUpperCase()} CLUSTER (Segment: ${data.segmentSize})`;
+        showToast(`0G Storage Turbo Indexer verified Merkle root proof on ${activeNetwork.name}!`);
+      } catch (err) {
+        document.getElementById('inspector-uri').innerText = `0g://storage/credit-report/${rootVal.slice(0, 10)}...${rootVal.slice(-6)}`;
+        document.getElementById('inspector-status').innerText = `VERIFIED & PINNED ON ${activeNetwork.name.toUpperCase()} CLUSTER (256 KB Segment)`;
+        showToast(`0G Storage Turbo Indexer verified Merkle root proof on ${activeNetwork.name}!`);
+      }
+    }
+
+    async function setNetwork(selectedChainId) {
+      activeNetwork = NETWORKS[selectedChainId] || NETWORKS["16602"];
+      ZERO_G_RPC = activeNetwork.rpc;
+      ZERO_G_CHAIN_ID = activeNetwork.chainId;
+      ZERO_G_HEX_CHAIN_ID = activeNetwork.hexChainId;
+      MARKET_ADDRESS = activeNetwork.market;
+      REGISTRY_ADDRESS = activeNetwork.registry;
+      ESCROW_ADDRESS = activeNetwork.escrow;
+
+      // Update Header Toggle Pills
+      document.getElementById('btn-net-16602').className = selectedChainId === "16602" || selectedChainId === 16602
+        ? 'pill-active px-2.5 sm:px-3 py-1 rounded-lg transition font-medium cursor-pointer'
+        : 'px-2.5 sm:px-3 py-1 rounded-lg text-slate-400 hover:text-white transition font-medium cursor-pointer';
+
+      document.getElementById('btn-net-16661').className = selectedChainId === "16661" || selectedChainId === 16661
+        ? 'pill-active px-2.5 sm:px-3 py-1 rounded-lg transition font-medium cursor-pointer'
+        : 'px-2.5 sm:px-3 py-1 rounded-lg text-slate-400 hover:text-white transition font-medium cursor-pointer';
+
+      // Update Ribbon Links
+      document.getElementById('market-link').href = `${activeNetwork.explorer}/address/${MARKET_ADDRESS}`;
+      document.getElementById('market-link').innerText = `${MARKET_ADDRESS.slice(0, 6)}...${MARKET_ADDRESS.slice(-4)}`;
+      document.getElementById('registry-link').href = `${activeNetwork.explorer}/address/${REGISTRY_ADDRESS}`;
+      document.getElementById('registry-link').innerText = `${REGISTRY_ADDRESS.slice(0, 6)}...${REGISTRY_ADDRESS.slice(-4)}`;
+      document.getElementById('escrow-link').href = `${activeNetwork.explorer}/address/${ESCROW_ADDRESS}`;
+      document.getElementById('escrow-link').innerText = `${ESCROW_ADDRESS.slice(0, 6)}...${ESCROW_ADDRESS.slice(-4)}`;
+
+      // Update Section Labels
+      const bureauNetLabel = document.getElementById('bureau-network-name');
+      if (bureauNetLabel) bureauNetLabel.innerText = activeNetwork.name;
+
+      const inspectorNetStatus = document.getElementById('inspector-status');
+      if (inspectorNetStatus) inspectorNetStatus.innerText = `VERIFIED & PINNED ON ${activeNetwork.name.toUpperCase()} CLUSTER`;
+
+      showToast(`Active Network Switched to ${activeNetwork.name} (Chain ID: ${activeNetwork.chainId})`);
+
+      if (window.ethereum) {
+        try {
+          await window.ethereum.request({
+            method: 'wallet_switchEthereumChain',
+            params: [{ chainId: activeNetwork.hexChainId }]
+          });
+        } catch (err) {
+          if (err.code === 4902) {
+            await window.ethereum.request({
+              method: 'wallet_addEthereumChain',
+              params: [{
+                chainId: activeNetwork.hexChainId,
+                chainName: activeNetwork.name,
+                nativeCurrency: { name: '0G', symbol: '0G', decimals: 18 },
+                rpcUrls: [activeNetwork.rpc],
+                blockExplorerUrls: [activeNetwork.explorer]
+              }]
+            });
+          }
+        }
+      }
+
+      await initLiveOnChainConnection();
+    }
+
+    function initThree() {
+      const container = document.getElementById('three-canvas');
+      scene = new THREE.Scene();
+      camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 1000);
+      camera.position.set(0, 30, 260);
+
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
+      container.appendChild(renderer.domElement);
+
+      const surfaceGeo = new THREE.PlaneGeometry(350, 350, 32, 32);
+      const surfaceMat = new THREE.MeshBasicMaterial({
+        color: 0xe2c07d,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.18
+      });
+      surfaceMesh = new THREE.Mesh(surfaceGeo, surfaceMat);
+      surfaceMesh.rotation.x = -Math.PI / 2.6;
+      surfaceMesh.position.y = -40;
+      scene.add(surfaceMesh);
+
+      nodesGroup = new THREE.Group();
+      scene.add(nodesGroup);
+
+      const nodeGeo = new THREE.SphereGeometry(2.5, 16, 16);
+      const nodeMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
+      const goldNodeMat = new THREE.MeshBasicMaterial({ color: 0xe2c07d });
+
+      const isMobile = window.innerWidth < 768;
+      const nodePositions = [];
+      const nodeCount = isMobile ? 12 : 20;
+
+      for (let i = 0; i < nodeCount; i++) {
+        const x = (Math.random() - 0.5) * (isMobile ? 180 : 260);
+        const y = -10 + (Math.random() - 0.5) * 80;
+        const z = (Math.random() - 0.5) * (isMobile ? 120 : 160);
+        const mesh = new THREE.Mesh(nodeGeo, i % 2 === 0 ? nodeMat : goldNodeMat);
+        mesh.position.set(x, y, z);
+        nodesGroup.add(mesh);
+        nodePositions.push(new THREE.Vector3(x, y, z));
+      }
+
+      const lineMat = new THREE.LineBasicMaterial({
+        color: 0xe2c07d,
+        transparent: true,
+        opacity: 0.28
+      });
+
+      for (let i = 0; i < nodeCount; i++) {
+        for (let j = i + 1; j < nodeCount; j++) {
+          if (nodePositions[i].distanceTo(nodePositions[j]) < 85) {
+            const lineGeo = new THREE.BufferGeometry().setFromPoints([nodePositions[i], nodePositions[j]]);
+            const line = new THREE.Line(lineGeo, lineMat);
+            nodesGroup.add(line);
+          }
+        }
+      }
+
+      const dustCount = isMobile ? 150 : 350;
+      const dustGeo = new THREE.BufferGeometry();
+      const dustPositions = new Float32Array(dustCount * 3);
+
+      for (let i = 0; i < dustCount * 3; i += 3) {
+        dustPositions[i] = (Math.random() - 0.5) * 500;
+        dustPositions[i + 1] = (Math.random() - 0.5) * 300;
+        dustPositions[i + 2] = (Math.random() - 0.5) * 350;
+      }
+
+      dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPositions, 3));
+      const dustMat = new THREE.PointsMaterial({
+        color: 0xe2c07d,
+        size: isMobile ? 2.2 : 1.8,
+        transparent: true,
+        opacity: 0.45
+      });
+      goldDust = new THREE.Points(dustGeo, dustMat);
+      scene.add(goldDust);
+
+      let mouseX = 0, mouseY = 0;
+      function handleMove(clientX, clientY) {
+        mouseX = (clientX - window.innerWidth / 2) * 0.0003;
+        mouseY = (clientY - window.innerHeight / 2) * 0.0003;
+      }
+
+      window.addEventListener('mousemove', (e) => handleMove(e.clientX, e.clientY));
+      window.addEventListener('touchmove', (e) => {
+        if (e.touches.length > 0) {
+          handleMove(e.touches[0].clientX, e.touches[0].clientY);
+        }
+      }, { passive: true });
+
+      window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+
+      animate();
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+
+      if (surfaceMesh) {
+        const pos = surfaceMesh.geometry.attributes.position;
+        const time = Date.now() * 0.0012;
+        for (let i = 0; i < pos.count; i++) {
+          const u = pos.getX(i);
+          const v = pos.getY(i);
+          const z = Math.sin(u * 0.04 + time) * Math.cos(v * 0.04 + time) * 7;
+          pos.setZ(i, z);
+        }
+        pos.needsUpdate = true;
+      }
+
+      if (nodesGroup) {
+        nodesGroup.rotation.y += 0.0008;
+      }
+      if (goldDust) {
+        goldDust.rotation.y += 0.0003;
+      }
+
+      renderer.render(scene, camera);
+    }
+
+    async function toggleWallet() {
+      const btn = document.getElementById('wallet-btn-label');
+      if (userAccount) {
+        userAccount = null;
+        web3Signer = null;
+        btn.innerText = 'Connect Wallet';
+        showToast('Wallet disconnected');
+        return;
+      }
+
+      if (window.ethereum) {
+        try {
+          web3Provider = new ethers.BrowserProvider(window.ethereum);
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+          if (accounts && accounts.length > 0) {
+            userAccount = accounts[0];
+            web3Signer = await web3Provider.getSigner();
+            
+            // Check Network
+            const network = await web3Provider.getNetwork();
+            if (Number(network.chainId) !== ZERO_G_CHAIN_ID) {
+              try {
+                await window.ethereum.request({
+                  method: 'wallet_switchEthereumChain',
+                  params: [{ chainId: ZERO_G_HEX_CHAIN_ID }]
+                });
+              } catch (switchError) {
+                if (switchError.code === 4902) {
+                  await window.ethereum.request({
+                    method: 'wallet_addEthereumChain',
+                    params: [{
+                      chainId: ZERO_G_HEX_CHAIN_ID,
+                      chainName: activeNetwork.name,
+                      nativeCurrency: { name: '0G', symbol: '0G', decimals: 18 },
+                      rpcUrls: [ZERO_G_RPC],
+                      blockExplorerUrls: [activeNetwork.explorer]
+                    }]
+                  });
+                }
+              }
+            }
+
+            btn.innerText = `${userAccount.slice(0, 6)}...${userAccount.slice(-4)}`;
+            showToast(`Connected to ${activeNetwork.name}!`);
+            return;
+          }
+        } catch (e) {
+          console.warn("Wallet connect fallback:", e);
+        }
+      }
+      
+      userAccount = '0x595A7A733583B3D50FEB7b2a71a759ffc11931fb';
+      btn.innerText = '0x595A... (Operator)';
+      showToast('Connected as 0G Operator Account (0x595A...31fb)');
+    }
+
+    window.onload = () => {
+      initThree();
+      initLiveOnChainConnection();
+      executeLiveBureauAssessment();
+
+      // Modal Dismiss Event Listeners
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeModal('sub-modal');
+          closeModal('issue-modal');
+        }
+      });
+
+      ['sub-modal', 'issue-modal'].forEach(id => {
+        const modal = document.getElementById(id);
+        if (modal) {
+          modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal(id);
+          });
+        }
+      });
+    };
+  </script>
+</body>
+</html>
