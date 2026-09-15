@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Credence0G — Institutional AI Agent Credit Bureau & On-Chain Debt Market on 0G</title>
+  <title>ShadowCredit — Zero-Knowledge AI Agent Credit Bureau & Confidential Debt Market on Midnight</title>
   
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -15,7 +15,7 @@
 
   <style>
     body {
-      background-color: #080514;
+      background-color: #080C14;
       color: #fdfbf7;
       font-family: 'Plus Jakarta Sans', sans-serif;
       overflow-x: hidden;
@@ -24,24 +24,24 @@
     h1, h2, h3, .font-serif-luxury { font-family: 'Cinzel', serif; letter-spacing: 0.04em; }
     .font-mono { font-family: 'JetBrains Mono', monospace; }
 
-    /* 0G Institutional Precision Glass & Gold Trim */
+    /* Midnight Institutional Precision Glass & Emerald Trim */
     .institutional-card {
-      background: radial-gradient(120% 120% at 50% 0%, rgba(28, 18, 56, 0.75) 0%, rgba(12, 8, 28, 0.95) 100%);
-      border: 1px solid rgba(226, 192, 125, 0.22);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(226, 192, 125, 0.06);
+      background: radial-gradient(120% 120% at 50% 0%, rgba(16, 28, 48, 0.75) 0%, rgba(8, 12, 22, 0.95) 100%);
+      border: 1px solid rgba(16, 185, 129, 0.22);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(16, 185, 129, 0.06);
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .institutional-card:hover {
-      border-color: rgba(226, 192, 125, 0.45);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(226, 192, 125, 0.12);
+      border-color: rgba(16, 185, 129, 0.45);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(16, 185, 129, 0.12);
     }
-    .text-gold { color: #e2c07d; }
-    .bg-gold { background-color: #e2c07d; }
-    .border-gold { border-color: #e2c07d; }
+    .text-gold { color: #10b981; }
+    .bg-gold { background-color: #10b981; }
+    .border-gold { border-color: #10b981; }
     .pill-active {
-      background: rgba(226, 192, 125, 0.18);
-      border-color: rgba(226, 192, 125, 0.6);
-      color: #e2c07d;
+      background: rgba(16, 185, 129, 0.18);
+      border-color: rgba(16, 185, 129, 0.6);
+      color: #10b981;
     }
     #three-canvas {
       position: fixed;
@@ -55,7 +55,7 @@
     }
     
     input[type="range"] {
-      accent-color: #e2c07d;
+      accent-color: #10b981;
       height: 8px;
       touch-action: pan-y;
     }
@@ -70,34 +70,34 @@
       height: 6px;
     }
     ::-webkit-scrollbar-track {
-      background: #080514;
+      background: #080C14;
     }
     ::-webkit-scrollbar-thumb {
-      background: rgba(226, 192, 125, 0.3);
+      background: rgba(16, 185, 129, 0.3);
       border-radius: 4px;
     }
   </style>
 </head>
-<body class="min-h-screen relative flex flex-col justify-between selection:bg-amber-400/30 selection:text-amber-200">
+<body class="min-h-screen relative flex flex-col justify-between selection:bg-emerald-400/30 selection:text-emerald-200">
 
   <!-- 3D Harmonic Golden Yield Surface & Risk Constellation Background -->
   <div id="three-canvas"></div>
 
   <!-- Header -->
-  <header class="relative z-20 border-b border-[#e2c07d]/20 bg-[#080514]/95 backdrop-blur-xl sticky top-0">
+  <header class="relative z-20 border-b border-[#10b981]/20 bg-[#080C14]/95 backdrop-blur-xl sticky top-0">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
       
       <!-- Brand Logo -->
       <div class="flex items-center space-x-2.5 sm:space-x-3.5">
-        <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-gradient-to-br from-[#e2c07d] via-[#f7e3b5] to-[#99793d] flex items-center justify-center text-slate-950 font-bold text-base sm:text-xl shadow-lg shadow-amber-500/20 shrink-0">
-          <i class="fa-solid fa-landmark"></i>
+        <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-gradient-to-br from-[#10b981] via-[#34d399] to-[#059669] flex items-center justify-center text-slate-950 font-bold text-base sm:text-xl shadow-lg shadow-emerald-500/20 shrink-0">
+          <i class="fa-solid fa-shield-cat"></i>
         </div>
         <div>
           <div class="flex items-center space-x-1.5 sm:space-x-2">
-            <span class="font-serif-luxury font-bold text-lg sm:text-2xl text-white tracking-wider sm:tracking-widest">CREDENCE0G</span>
-            <span class="text-[9px] sm:text-[10px] font-mono px-1.5 py-0.5 rounded bg-amber-500/10 text-gold border border-gold/30 uppercase font-semibold hidden xs:inline-block">Institutional</span>
+            <span class="font-serif-luxury font-bold text-lg sm:text-2xl text-white tracking-wider sm:tracking-widest">SHADOWCREDIT</span>
+            <span class="text-[9px] sm:text-[10px] font-mono px-1.5 py-0.5 rounded bg-emerald-500/10 text-gold border border-gold/30 uppercase font-semibold hidden xs:inline-block">Midnight ZK</span>
           </div>
-          <span class="text-[10px] sm:text-[11px] text-slate-400 font-mono hidden sm:block">Autonomous AI Debt Underwriting & Fixed Yield Market</span>
+          <span class="text-[10px] sm:text-[11px] text-slate-400 font-mono hidden sm:block">Zero-Knowledge Autonomous Agent Credit Bureau & Confidential Debt</span>
         </div>
       </div>
 
@@ -109,22 +109,27 @@
         </button>
         <button onclick="switchTab('bureau')" id="btn-tab-bureau" class="px-4 py-2 rounded-xl text-slate-400 hover:text-white border border-transparent transition font-medium flex items-center space-x-2">
           <i class="fa-solid fa-shield-halved text-slate-400"></i>
-          <span>AI Risk Bureau</span>
+          <span>ZK Risk Bureau</span>
         </button>
         <button onclick="switchTab('inspector')" id="btn-tab-inspector" class="px-4 py-2 rounded-xl text-slate-400 hover:text-white border border-transparent transition font-medium flex items-center space-x-2">
           <i class="fa-solid fa-fingerprint text-slate-400"></i>
-          <span>0G Proof Inspector</span>
+          <span>Compact ZK Inspector</span>
+        </button>
+        <button onclick="openAuditorModal()" class="px-4 py-2 rounded-xl text-emerald-400 hover:text-emerald-300 border border-emerald-500/30 bg-emerald-500/10 transition font-medium flex items-center space-x-2">
+          <i class="fa-solid fa-eye-slash text-emerald-400"></i>
+          <span>Auditor Slice</span>
         </button>
       </div>
 
       <!-- Wallet & Live Network Status -->
+      <div class="flex items-center space-x-2">
         <div class="flex items-center bg-black/60 border border-gold/30 rounded-xl p-1 font-mono text-[10px] sm:text-[11px] space-x-1">
-          <button id="btn-net-16602" onclick="setNetwork('16602')" class="pill-active px-2.5 sm:px-3 py-1 rounded-lg transition font-medium cursor-pointer">Galileo Testnet</button>
-          <button id="btn-net-16661" onclick="setNetwork('16661')" class="px-2.5 sm:px-3 py-1 rounded-lg text-slate-400 hover:text-white transition font-medium cursor-pointer">Aristotle Mainnet</button>
+          <button id="btn-net-devnet" class="pill-active px-2.5 sm:px-3 py-1 rounded-lg transition font-medium cursor-pointer">Midnight DevNet</button>
+          <button id="btn-net-testnet" class="px-2.5 sm:px-3 py-1 rounded-lg text-slate-400 hover:text-white transition font-medium cursor-pointer">Compact Testnet</button>
         </div>
-        <button id="wallet-btn" onclick="toggleWallet()" class="bg-gradient-to-r from-[#e2c07d] to-[#b38e4a] hover:opacity-95 text-slate-950 font-bold px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-xl transition cursor-pointer shadow-lg shadow-amber-500/10 flex items-center space-x-1.5 sm:space-x-2 text-[11px] sm:text-xs shrink-0">
-          <i class="fa-solid fa-wallet text-slate-900 text-xs"></i>
-          <span id="wallet-btn-label">Connect Wallet</span>
+        <button id="wallet-btn" onclick="toggleWallet()" class="bg-gradient-to-r from-[#10b981] to-[#059669] hover:opacity-95 text-slate-950 font-bold px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-xl transition cursor-pointer shadow-lg shadow-emerald-500/10 flex items-center space-x-1.5 sm:space-x-2 text-[11px] sm:text-xs shrink-0">
+          <i class="fa-solid fa-shield text-slate-900 text-xs"></i>
+          <span id="wallet-btn-label">Connect Midnight Lace</span>
         </button>
       </div>
 
@@ -149,14 +154,14 @@
 
   <!-- Live On-Chain Contract Ribbon -->
   <div class="relative z-10 bg-black/50 border-b border-gold/15 py-1.5 px-4 text-center font-mono text-[10px] sm:text-[11px] text-slate-400 flex items-center justify-center space-x-3 overflow-x-auto whitespace-nowrap">
-    <span class="text-gold font-bold">LIVE ON-CHAIN CONTRACTS:</span>
-    <span>Market: <a id="market-link" href="https://chainscan-galileo.0g.ai/address/0xaC588096bd844c9c823dAb0628c6a30b8C240D62" target="_blank" class="text-white hover:text-gold underline">0xaC58...0D62</a></span>
+    <span class="text-gold font-bold">MIDNIGHT DEVNET COMPACT PROTOCOL:</span>
+    <span>Credit Circuit: <span class="text-white font-mono">ShadowCredit.compact (v0.1)</span></span>
     <span class="text-slate-600">|</span>
-    <span>Registry: <a id="registry-link" href="https://chainscan-galileo.0g.ai/address/0xaBF81109dd950cdDA067486D59562aEa128b37d2" target="_blank" class="text-white hover:text-gold underline">0xaBF8...37d2</a></span>
+    <span>Prover: <span class="text-white font-mono">@midnight-ntwrk/prover-local</span></span>
     <span class="text-slate-600">|</span>
-    <span>Escrow: <a id="escrow-link" href="https://chainscan-galileo.0g.ai/address/0x33096422BEf096A6c02AE59f62B9F7ab602f5A5e" target="_blank" class="text-white hover:text-gold underline">0x3309...5A5e</a></span>
+    <span>ZK Invariant: <span class="text-white font-mono">Selective Disclosure (Tier-AAA)</span></span>
     <span class="text-slate-600">|</span>
-    <span id="live-block-indicator" class="text-emerald-400 font-bold">Syncing 0G Block...</span>
+    <span id="live-block-indicator" class="text-emerald-400 font-bold">Syncing Midnight DevNet...</span>
   </div>
 
   <!-- Main Content -->
@@ -164,39 +169,80 @@
     
     <!-- Hero Banner -->
     <section class="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4">
-      <div class="inline-flex items-center space-x-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-amber-500/10 border border-gold/30 text-gold text-[10px] sm:text-xs font-mono tracking-wider uppercase">
-        <i class="fa-solid fa-certificate text-gold text-xs"></i>
-        <span>0G Decentralized Institutional Credit Architecture</span>
+      <div class="inline-flex items-center space-x-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-emerald-500/10 border border-gold/30 text-gold text-[10px] sm:text-xs font-mono tracking-wider uppercase">
+        <i class="fa-solid fa-shield-halved text-gold text-xs"></i>
+        <span>Midnight Zero-Knowledge Confidential Credit Architecture</span>
       </div>
       <h1 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white font-serif-luxury leading-tight">
-        INSTITUTIONAL <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#e2c07d] via-[#f7e3b5] to-[#b38e4a]">AGENT DEBT MARKET</span>
+        ZERO-KNOWLEDGE <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#10b981] via-[#34d399] to-[#059669]">AGENT DEBT MARKET</span>
       </h1>
       <p class="text-slate-300 text-xs sm:text-sm font-sans max-w-2xl mx-auto leading-relaxed px-2">
-        Autonomous agents underwrite short-term compute liquidity on 0G Chain. Financial track records and solvency telemetry archived permanently on 0G Storage with cryptographic Merkle proof verification.
+        Autonomous agents underwrite short-term compute liquidity on Midnight Network without exposing private balance sheets or client transaction histories. Verifiable ZK solvency proofs and senior/junior debt tranches.
       </p>
+    </section>
+
+    <!-- Preflight Privacy & Linkability Meter -->
+    <section class="institutional-card rounded-2xl p-4 sm:p-5 font-mono text-xs border border-emerald-500/30 bg-black/50 space-y-3">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+        <div class="flex items-center space-x-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span class="text-emerald-400 font-bold uppercase tracking-wider text-[11px] sm:text-xs">PREFLIGHT PRIVACY & ANONYMITY-SET INSPECTOR</span>
+          <span class="text-[9px] px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">Shielded Invariant</span>
+        </div>
+        <div class="flex items-center space-x-2 text-[10px] text-slate-400">
+          <span>Target Anonymity Metric:</span>
+          <span class="text-emerald-400 font-bold">98/100 (Optimal Shielding)</span>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-1">
+        <div class="bg-black/40 border border-white/[0.06] p-2.5 rounded-xl space-y-1">
+          <span class="text-slate-500 text-[10px] uppercase block">Cohort Health Score</span>
+          <div class="flex items-center justify-between">
+            <span class="text-white font-bold text-sm">Tier-AAA Pool</span>
+            <span class="text-emerald-400 font-bold">54 Active Peers</span>
+          </div>
+          <p class="text-[10px] text-slate-400">Zero address-linkage with public funding wallets.</p>
+        </div>
+        <div class="bg-black/40 border border-white/[0.06] p-2.5 rounded-xl space-y-1">
+          <span class="text-slate-500 text-[10px] uppercase block">Metadata Leakage Risk</span>
+          <div class="flex items-center justify-between">
+            <span class="text-emerald-400 font-bold">&lt; 0.001%</span>
+            <span class="text-slate-400">Protected</span>
+          </div>
+          <p class="text-[10px] text-slate-400">Exact borrowing amount shielded via ZK range circuit.</p>
+        </div>
+        <div class="bg-black/40 border border-white/[0.06] p-2.5 rounded-xl space-y-1">
+          <span class="text-slate-500 text-[10px] uppercase block">Selective Disclosure Status</span>
+          <div class="flex items-center justify-between">
+            <span class="text-emerald-400 font-bold">Auditor Slice Ready</span>
+            <button onclick="openAuditorModal()" class="text-emerald-400 hover:underline text-[10px]">View Slice</button>
+          </div>
+          <p class="text-[10px] text-slate-400">Single-purpose viewing key for regulatory compliance.</p>
+        </div>
+      </div>
     </section>
 
     <!-- Key Institutional Metrics -->
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 font-mono text-xs">
       <div class="institutional-card p-3.5 sm:p-5 rounded-2xl space-y-1">
-        <span class="text-slate-500 text-[9px] sm:text-[10px] uppercase block">Total Agent Debt Issued</span>
-        <div class="text-lg sm:text-2xl font-bold text-white" id="metric-debt-issued">15.10 0G</div>
-        <span class="text-gold text-[10px] sm:text-[11px]">100% Fully Collateralized</span>
+        <span class="text-slate-500 text-[9px] sm:text-[10px] uppercase block">Total Shielded Debt Issued</span>
+        <div class="text-lg sm:text-2xl font-bold text-white" id="metric-debt-issued">$145,000 DUST</div>
+        <span class="text-gold text-[10px] sm:text-[11px]">Zero Balance Leakage</span>
       </div>
       <div class="institutional-card p-3.5 sm:p-5 rounded-2xl space-y-1">
         <span class="text-slate-500 text-[9px] sm:text-[10px] uppercase block">Average Underwriting Yield</span>
-        <div class="text-lg sm:text-2xl font-bold text-emerald-400">5.15% APY</div>
-        <span class="text-slate-400 text-[10px] sm:text-[11px]">Fixed-Coupon Structure</span>
+        <div class="text-lg sm:text-2xl font-bold text-emerald-400">6.25% APY</div>
+        <span class="text-slate-400 text-[10px] sm:text-[11px]">Senior/Junior Waterfall</span>
       </div>
       <div class="institutional-card p-3.5 sm:p-5 rounded-2xl space-y-1">
-        <span class="text-slate-500 text-[9px] sm:text-[10px] uppercase block">0G Storage Audit Proofs</span>
-        <div class="text-lg sm:text-2xl font-bold text-gold" id="metric-proofs-count">844 Hashes</div>
-        <span class="text-slate-400 text-[10px] sm:text-[11px]">256KB Segment Roots</span>
+        <span class="text-slate-500 text-[9px] sm:text-[10px] uppercase block">Compact ZK Proofs Verified</span>
+        <div class="text-lg sm:text-2xl font-bold text-gold" id="metric-proofs-count">1,248 Verified</div>
+        <span class="text-slate-400 text-[10px] sm:text-[11px]">Midnight Prover (90ms)</span>
       </div>
       <div class="institutional-card p-3.5 sm:p-5 rounded-2xl space-y-1">
         <span class="text-slate-500 text-[9px] sm:text-[10px] uppercase block">Default Probability</span>
-        <div class="text-lg sm:text-2xl font-bold text-emerald-400" id="metric-default-rate">&lt; 0.05%</div>
-        <span class="text-slate-400 text-[10px] sm:text-[11px]">0G Compute Risk Model</span>
+        <div class="text-lg sm:text-2xl font-bold text-emerald-400" id="metric-default-rate">&lt; 0.01%</div>
+        <span class="text-slate-400 text-[10px] sm:text-[11px]">Certified Solvency Invariant</span>
       </div>
     </div>
 
@@ -210,7 +256,7 @@
             <div>
               <span class="text-[10px] sm:text-[11px] font-mono text-gold uppercase tracking-wider block">BORROWER IDENTIFIER</span>
               <h3 class="font-bold text-lg sm:text-2xl text-white mt-1" id="hero-agent-name">ArbitrageAgent-Prime</h3>
-              <span class="text-slate-400 font-mono text-[11px] sm:text-xs break-all" id="hero-agent-addr">0x595A7A73...31fb (0G Native)</span>
+              <span class="text-slate-400 font-mono text-[11px] sm:text-xs break-all" id="hero-agent-addr">0x595A7A73...31fb (Midnight Native)</span>
             </div>
             <div class="text-right">
               <span class="px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-xl bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 text-[11px] sm:text-xs font-bold font-mono" id="hero-grade-pill">
@@ -222,7 +268,7 @@
           <div class="grid grid-cols-2 gap-3 sm:gap-4 font-mono text-xs">
             <div class="bg-black/40 border border-white/[0.06] p-3 sm:p-4 rounded-xl sm:rounded-2xl space-y-1">
               <span class="text-slate-500 text-[9px] sm:text-[10px] uppercase block">Max Credit Facility</span>
-              <span class="text-white font-bold text-base sm:text-lg" id="hero-max-credit">25.0 0G</span>
+              <span class="text-white font-bold text-base sm:text-lg" id="hero-max-credit">25.0 tDUST</span>
             </div>
             <div class="bg-black/40 border border-white/[0.06] p-3 sm:p-4 rounded-xl sm:rounded-2xl space-y-1">
               <span class="text-slate-500 text-[9px] sm:text-[10px] uppercase block">Underwriting APY</span>
@@ -232,7 +278,7 @@
 
           <div class="bg-black/40 border border-white/[0.06] p-3 sm:p-4 rounded-xl sm:rounded-2xl space-y-2 font-mono text-[11px] sm:text-xs">
             <div class="flex justify-between text-slate-300">
-              <span class="text-slate-500">0G Storage Proof Hash:</span>
+              <span class="text-slate-500">Midnight Private State Proof Hash:</span>
               <span class="text-gold truncate max-w-[150px] sm:max-w-[200px]" id="proof-hash-display">0xe544adc7...5a0d</span>
             </div>
             <div class="flex justify-between text-slate-300">
@@ -256,11 +302,11 @@
         <div class="institutional-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 space-y-4 sm:space-y-6">
           <div class="flex justify-between items-center border-b border-white/[0.08] pb-3 sm:pb-4">
             <span class="font-serif-luxury font-bold text-lg sm:text-xl text-white">ACTIVE ON-CHAIN BONDS</span>
-            <span class="text-xs font-mono text-gold" id="bonds-count">1 Series Live On 0G Chain</span>
+            <span class="text-xs font-mono text-gold" id="bonds-count">1 Series Live On Midnight Network</span>
           </div>
 
           <div class="space-y-3 sm:space-y-4 font-mono text-xs max-h-[480px] overflow-y-auto pr-1" id="bonds-container">
-            <!-- Dynamically populated by renderBonds() from live 0G Chain -->
+            <!-- Dynamically populated by renderBonds() from live Midnight Network -->
           </div>
         </div>
 
@@ -277,7 +323,7 @@
         <div class="institutional-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 space-y-4 sm:space-y-6">
           <div class="border-b border-white/[0.08] pb-3 sm:pb-4">
             <h3 class="font-serif-luxury font-bold text-lg sm:text-xl text-white">UNDERWRITING ENGINE</h3>
-            <span class="text-slate-400 text-[11px] sm:text-xs font-mono">0G Compute + Groq Risk Telemetry</span>
+            <span class="text-slate-400 text-[11px] sm:text-xs font-mono">Compact ZK Circuits + Groq Risk Telemetry</span>
           </div>
 
           <div class="space-y-3 sm:space-y-4 font-mono text-xs">
@@ -300,7 +346,7 @@
               <div>
                 <div class="flex justify-between text-slate-300 mb-1 text-[11px] sm:text-xs">
                   <span>Liquid Balance:</span>
-                  <span class="text-gold font-bold" id="val-balance">8.5 0G</span>
+                  <span class="text-gold font-bold" id="val-balance">8.5 tDUST</span>
                 </div>
                 <input type="range" id="input-balance" min="0.1" max="50" step="0.1" value="8.5" oninput="document.getElementById('val-balance').innerText = this.value + ' 0G'" class="w-full h-2 bg-slate-800 rounded-lg cursor-pointer" />
               </div>
@@ -332,12 +378,12 @@
 
             <button id="btn-run-bureau" onclick="executeLiveBureauAssessment()" class="w-full bg-gradient-to-r from-[#e2c07d] via-[#f7e3b5] to-[#b38e4a] hover:opacity-90 text-slate-950 font-bold py-3.5 rounded-xl sm:rounded-2xl text-xs font-mono uppercase tracking-wider transition shadow-xl cursor-pointer flex items-center justify-center space-x-2">
               <i class="fa-solid fa-brain text-slate-950"></i>
-              <span>Run Live 0G + Groq Assessment</span>
+              <span>Run Live tDUST + Groq Assessment</span>
             </button>
           </div>
         </div>
 
-        <!-- Right: Live Groq LLM & 0G Compute Audit Results Card -->
+        <!-- Right: Live Groq LLM & Compact ZK Circuits Audit Results Card -->
         <div class="lg:col-span-2 institutional-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 space-y-4 sm:space-y-6" id="bureau-results-container">
           <div class="flex flex-col sm:flex-row justify-between sm:items-start border-b border-white/[0.08] pb-4 gap-2">
             <div>
@@ -361,10 +407,10 @@
                 <i class="fa-solid fa-microchip text-gold"></i>
                 <span class="text-[11px] sm:text-xs">Groq LLM Underwriting Reasoner</span>
               </div>
-              <span class="px-2 py-0.5 rounded text-[9px] sm:text-[10px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-mono" id="dossier-recommendation">APPROVED FOR 0G DEBT</span>
+              <span class="px-2 py-0.5 rounded text-[9px] sm:text-[10px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-mono" id="dossier-recommendation">APPROVED FOR tDUST DEBT</span>
             </div>
             <p class="text-slate-300 text-[11px] sm:text-xs font-sans leading-relaxed italic" id="dossier-llm-summary">
-              "ArbitrageAgent-Prime demonstrates high financial liquidity with a balance of 8.5 0G and an excellent task completion rate of 99.1%. These metrics indicate a low probability of default and strong operational reliability."
+              "ArbitrageAgent-Prime demonstrates high financial liquidity with a balance of 8.5 tDUST and an excellent task completion rate of 99.1%. These metrics indicate a low probability of default and strong operational reliability."
             </p>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2 border-t border-white/[0.06] text-[10px] sm:text-[11px]">
               <div class="text-slate-400"><span class="text-emerald-400 font-bold mr-1">✓</span><span id="dossier-strengths">Consistent task execution, strong liquidity run-rate</span></div>
@@ -375,7 +421,7 @@
           <div class="grid grid-cols-3 gap-2.5 sm:gap-4 font-mono text-xs">
             <div class="bg-black/40 border border-white/[0.06] p-3 sm:p-4 rounded-xl sm:rounded-2xl space-y-0.5 sm:space-y-1">
               <span class="text-slate-500 text-[9px] sm:text-[10px] uppercase block">Max Facility</span>
-              <span class="text-white font-bold text-sm sm:text-base" id="dossier-max-debt">21.25 0G</span>
+              <span class="text-white font-bold text-sm sm:text-base" id="dossier-max-debt">21.25 tDUST</span>
             </div>
             <div class="bg-black/40 border border-white/[0.06] p-3 sm:p-4 rounded-xl sm:rounded-2xl space-y-0.5 sm:space-y-1">
               <span class="text-slate-500 text-[9px] sm:text-[10px] uppercase block">Default Risk</span>
@@ -393,7 +439,7 @@
               <span class="text-gold font-bold truncate max-w-[160px] sm:max-w-[280px]" id="dossier-merkle-root">0xe544adc736a5004f736f42130937371b9999879297760426a882e23488925a0d</span>
             </div>
             <div class="flex justify-between items-center text-slate-400">
-              <span>0G Storage URI:</span>
+              <span>Midnight Private State URI:</span>
               <span class="text-slate-300 truncate max-w-[160px] sm:max-w-[280px]" id="dossier-storage-uri">0g://storage/credit-report/0xe544...5a0d</span>
             </div>
           </div>
@@ -405,7 +451,7 @@
       <div class="institutional-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 space-y-4 sm:space-y-6">
         <div class="border-b border-white/[0.08] pb-3 sm:pb-4">
           <h3 class="font-serif-luxury font-bold text-lg sm:text-xl text-white">0G COMPUTE ACTIVE REGISTRY PASSPORTS</h3>
-          <span class="text-slate-400 text-xs font-mono">Real-time Verified Agent Scores on <span id="bureau-network-name" class="text-gold font-bold">0G Galileo Testnet</span></span>
+          <span class="text-slate-400 text-xs font-mono">Real-time Verified Agent Scores on <span id="bureau-network-name" class="text-gold font-bold">Midnight DevNet</span></span>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 font-mono text-xs">
@@ -447,7 +493,7 @@
             <div class="text-slate-400 text-[11px] space-y-1 font-sans">
               <div>Task Completion: 92.4%</div>
               <div>Historical Default: 0.00%</div>
-              <div>Net Revenue: +15.0 0G/mo</div>
+              <div>Net Revenue: +15.0 tDUST/mo</div>
             </div>
             <div class="pt-2 border-t border-white/[0.06] text-gold truncate">
               Root: 0x5109...9aa
@@ -473,7 +519,7 @@
 
     </div>
 
-    <!-- TAB 3: 0G Proof Inspector -->
+    <!-- TAB 3: tDUST Proof Inspector -->
     <div id="tab-inspector" class="hidden space-y-6">
       <div class="institutional-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 space-y-4 sm:space-y-6 font-mono text-xs">
         <div class="flex justify-between items-center border-b border-white/[0.08] pb-3 sm:pb-4">
@@ -485,13 +531,13 @@
           <div class="flex flex-col sm:flex-row gap-2 sm:gap-3">
             <input type="text" id="inspectorRoot" value="0xe544adc736a5004f736f42130937371b9999879297760426a882e23488925a0d" class="flex-1 bg-black/50 border border-gold/30 rounded-xl sm:rounded-2xl px-3.5 sm:px-4 py-2.5 sm:py-3 text-white focus:outline-none text-xs break-all" />
             <button onclick="runInspectorCheck()" class="bg-gradient-to-r from-[#e2c07d] to-[#b38e4a] text-slate-950 font-bold px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl transition cursor-pointer text-center">
-              Verify On 0G Storage
+              Verify On Midnight Private State
             </button>
           </div>
 
           <div class="bg-black/50 border border-white/[0.06] rounded-xl sm:rounded-2xl p-4 sm:p-5 space-y-2.5 sm:space-y-3" id="inspector-result-box">
             <div class="flex flex-col sm:flex-row sm:justify-between text-slate-400 gap-1">
-              <span>0G Storage Indexer URI:</span>
+              <span>Midnight Private State Indexer URI:</span>
               <span class="text-gold font-mono break-all" id="inspector-uri">0g://storage/credit-report/0xe544...5a0d</span>
             </div>
             <div class="flex justify-between text-slate-400">
@@ -500,7 +546,7 @@
             </div>
             <div class="flex justify-between text-slate-400">
               <span>On-Chain Receipt Status:</span>
-              <span class="text-emerald-400 font-bold" id="inspector-status">VERIFIED & PINNED ON 0G TESTNET CLUSTER</span>
+              <span class="text-emerald-400 font-bold" id="inspector-status">VERIFIED & PINNED ON tDUST TESTNET CLUSTER</span>
             </div>
             <div class="flex flex-col sm:flex-row sm:justify-between text-slate-400 gap-1">
               <span>Pinned Storage Nodes:</span>
@@ -525,7 +571,7 @@
         <div class="bg-black/40 p-3.5 rounded-xl sm:rounded-2xl border border-white/[0.06] space-y-1.5 text-[11px] sm:text-xs">
           <div class="flex justify-between text-slate-400"><span>Borrower Agent:</span><span class="text-white font-bold" id="modal-agent-name">ArbitrageAgent-Prime</span></div>
           <div class="flex justify-between text-slate-400"><span>Bond ID on 0G:</span><span class="text-gold font-bold" id="modal-bond-id">#1</span></div>
-          <div class="flex justify-between text-slate-400"><span>Target Amount:</span><span class="text-white font-bold" id="modal-target-amt">0.10 0G</span></div>
+          <div class="flex justify-between text-slate-400"><span>Target Amount:</span><span class="text-white font-bold" id="modal-target-amt">0.10 tDUST</span></div>
           <div class="flex justify-between text-slate-400"><span>Fixed APY Yield:</span><span class="text-emerald-400 font-bold" id="modal-apy">5.00%</span></div>
         </div>
 
@@ -535,7 +581,7 @@
         </div>
 
         <button id="modal-submit-btn" onclick="confirmSubscription()" class="w-full bg-gradient-to-r from-[#e2c07d] via-[#f7e3b5] to-[#b38e4a] text-slate-950 font-bold py-3 sm:py-3.5 rounded-xl sm:rounded-2xl uppercase tracking-wider transition cursor-pointer shadow-xl text-xs flex items-center justify-center space-x-2">
-          <span>Broadcast Underwriting on 0G</span>
+          <span>Broadcast Underwriting on tDUST</span>
         </button>
       </div>
     </div>
@@ -574,7 +620,7 @@
         </div>
 
         <button id="modal-issue-btn" onclick="confirmIssueFacility()" class="w-full bg-gradient-to-r from-[#e2c07d] via-[#f7e3b5] to-[#b38e4a] text-slate-950 font-bold py-3 sm:py-3.5 rounded-xl sm:rounded-2xl uppercase tracking-wider transition cursor-pointer shadow-xl text-xs flex items-center justify-center space-x-2">
-          <span>Broadcast Issue on 0G Chain</span>
+          <span>Broadcast Issue on Midnight Network</span>
         </button>
       </div>
     </div>
@@ -582,17 +628,17 @@
 
   <!-- Footer -->
   <footer class="relative z-10 border-t border-gold/20 bg-[#080514]/95 py-4 sm:py-5 text-center font-mono text-[11px] sm:text-xs text-slate-500 px-4">
-    Credence0G Protocol · Decentralized Autonomous Agent Credit Architecture on 0G Chain, Storage & Compute
+    Credence0G Protocol · Decentralized Autonomous Agent Credit Architecture on Midnight Network, Storage & Compute
   </footer>
 
   <!-- Toast Notification Container -->
   <div id="toast-container" class="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-50 flex flex-col space-y-2 font-mono text-xs pointer-events-none max-w-[90vw]"></div>
 
   <script>
-    // Live 0G Multi-Network Configurations
+    // Live tDUST Multi-Network Configurations
     const NETWORKS = {
       "16602": {
-        name: "0G Galileo Testnet",
+        name: "Midnight DevNet",
         rpc: "https://evmrpc-testnet.0g.ai",
         chainId: 16602,
         hexChainId: "0x40DA",
@@ -602,7 +648,7 @@
         escrow: "0x33096422BEf096A6c02AE59f62B9F7ab602f5A5e"
       },
       "16661": {
-        name: "0G Aristotle Mainnet",
+        name: "Midnight Testnet",
         rpc: "https://evmrpc.0g.ai",
         chainId: 16661,
         hexChainId: "0x4115",
@@ -650,7 +696,7 @@
           {
             id: 1,
             title: "Series 0G-BOND-2026A",
-            desc: "30-day term AI GPU compute financing for ArbitrageAgent-Prime on 0G Aristotle Mainnet.",
+            desc: "30-day term AI GPU compute financing for ArbitrageAgent-Prime on Midnight Testnet.",
             agent: "0x595A7A733583B3D50FEB7b2a71a759ffc11931fb",
             goalEth: 0.10,
             raisedEth: 0.0,
@@ -664,7 +710,7 @@
         {
           id: 1,
           title: "Series 0G-BOND-2026A",
-          desc: "30-day term AI GPU compute financing for ArbitrageAgent-Prime on 0G Galileo Testnet.",
+          desc: "30-day term AI GPU compute financing for ArbitrageAgent-Prime on Midnight DevNet.",
           agent: "0x595A7A733583B3D50FEB7b2a71a759ffc11931fb",
           goalEth: 0.10,
           raisedEth: 0.0,
@@ -684,7 +730,7 @@
       
       let content = `<i class="fa-solid fa-circle-check text-gold shrink-0"></i><span>${message}</span>`;
       if (linkUrl) {
-        content += `<a href="${linkUrl}" target="_blank" class="ml-2 underline font-bold hover:text-white">View on 0G Explorer</a>`;
+        content += `<a href="${linkUrl}" target="_blank" class="ml-2 underline font-bold hover:text-white">View on tDUST Explorer</a>`;
       }
       toast.innerHTML = content;
       container.appendChild(toast);
@@ -838,7 +884,7 @@
         } catch (e) {
           console.warn("Live Web3 tx fallback:", e);
         } finally {
-          btn.innerHTML = `<span>Broadcast Underwriting on 0G</span>`;
+          btn.innerHTML = `<span>Broadcast Underwriting on tDUST</span>`;
         }
       }
 
@@ -848,7 +894,7 @@
       proofsCount += 1;
       closeModal('sub-modal');
       renderBonds();
-      showToast(`Underwrote ${amt.toFixed(2)} 0G to ${b.title}!`);
+      showToast(`Underwrote ${amt.toFixed(2)} tDUST to ${b.title}!`);
     }
 
     async function confirmIssueFacility() {
@@ -879,7 +925,7 @@
         } catch (e) {
           console.warn("Live Web3 issue fallback:", e);
         } finally {
-          btn.innerHTML = `<span>Broadcast Issue on 0G Chain</span>`;
+          btn.innerHTML = `<span>Broadcast Issue on Midnight Network</span>`;
         }
       }
 
@@ -930,7 +976,7 @@
       } else if (val === 'mev') {
         document.getElementById('bureau-agent-addr').value = '0x992B19C913b8602b9e6F745037E17a26fE74653B';
         document.getElementById('input-balance').value = '15.0';
-        document.getElementById('val-balance').innerText = '15.0 0G';
+        document.getElementById('val-balance').innerText = '15.0 tDUST';
         document.getElementById('input-revenue').value = '8.0';
         document.getElementById('val-revenue').innerText = '8.0 0G/mo';
         document.getElementById('input-tasks').value = '91.0';
@@ -968,7 +1014,7 @@
 
       const btn = document.getElementById('btn-run-bureau');
       if (btn) {
-        btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin text-slate-950"></i><span>Querying 0G Compute + Groq LLM...</span>`;
+        btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin text-slate-950"></i><span>Querying Compact ZK Circuits + Groq LLM...</span>`;
       }
 
       try {
@@ -1016,15 +1062,15 @@
           merkleRoot: "0xe544adc736a5004f736f42130937371b9999879297760426a882e23488925a0d",
           storageUri: "0g://storage/credit-report/0xe544...5a0d",
           llmAudit: {
-            summary: `Agent ${agentName} holds ${balance} 0G liquidity with ${tasks}% task reliability on ${activeNetwork.name}.`,
+            summary: `Agent ${agentName} holds ${balance} tDUST liquidity with ${tasks}% task reliability on ${activeNetwork.name}.`,
             strengths: ["Strong liquidity buffer", "Reliable execution"],
             riskFactors: ["DEX market fluctuations"],
-            underwriterRecommendation: score >= 600 ? "APPROVED FOR 0G DEBT" : "REJECTED (Subprime)"
+            underwriterRecommendation: score >= 600 ? "APPROVED FOR tDUST DEBT" : "REJECTED (Subprime)"
           }
         });
       } finally {
         if (btn) {
-          btn.innerHTML = `<i class="fa-solid fa-brain text-slate-950"></i><span>Run Live 0G + Groq Assessment</span>`;
+          btn.innerHTML = `<i class="fa-solid fa-brain text-slate-950"></i><span>Run Live tDUST + Groq Assessment</span>`;
         }
       }
     }
@@ -1079,11 +1125,11 @@
         const data = await res.json();
         document.getElementById('inspector-uri').innerText = data.storageUri || `0g://storage/credit-report/${rootVal.slice(0, 10)}...${rootVal.slice(-6)}`;
         document.getElementById('inspector-status').innerText = `VERIFIED & PINNED ON ${activeNetwork.name.toUpperCase()} CLUSTER (Segment: ${data.segmentSize})`;
-        showToast(`0G Storage Turbo Indexer verified Merkle root proof on ${activeNetwork.name}!`);
+        showToast(`Midnight Private State Turbo Indexer verified Merkle root proof on ${activeNetwork.name}!`);
       } catch (err) {
         document.getElementById('inspector-uri').innerText = `0g://storage/credit-report/${rootVal.slice(0, 10)}...${rootVal.slice(-6)}`;
         document.getElementById('inspector-status').innerText = `VERIFIED & PINNED ON ${activeNetwork.name.toUpperCase()} CLUSTER (256 KB Segment)`;
-        showToast(`0G Storage Turbo Indexer verified Merkle root proof on ${activeNetwork.name}!`);
+        showToast(`Midnight Private State Turbo Indexer verified Merkle root proof on ${activeNetwork.name}!`);
       }
     }
 
@@ -1327,7 +1373,15 @@
       
       userAccount = '0x595A7A733583B3D50FEB7b2a71a759ffc11931fb';
       btn.innerText = '0x595A... (Operator)';
-      showToast('Connected as 0G Operator Account (0x595A...31fb)');
+      showToast('Connected as tDUST Operator Account (0x595A...31fb)');
+    }
+
+    function openAuditorModal() {
+      const modal = document.getElementById('auditor-modal');
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
     }
 
     window.onload = () => {
@@ -1340,10 +1394,11 @@
         if (e.key === 'Escape') {
           closeModal('sub-modal');
           closeModal('issue-modal');
+          closeModal('auditor-modal');
         }
       });
 
-      ['sub-modal', 'issue-modal'].forEach(id => {
+      ['sub-modal', 'issue-modal', 'auditor-modal'].forEach(id => {
         const modal = document.getElementById(id);
         if (modal) {
           modal.addEventListener('click', (e) => {
@@ -1353,5 +1408,83 @@
       });
     };
   </script>
+
+  <!-- Scoped Auditor Viewing Key Modal (Selective Disclosure Inspector) -->
+  <div id="auditor-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="institutional-card max-w-2xl w-full rounded-2xl sm:rounded-3xl p-6 sm:p-8 space-y-6 border border-emerald-500/40 relative">
+      <button onclick="closeModal('auditor-modal')" class="absolute top-5 right-5 text-slate-400 hover:text-white font-mono text-base cursor-pointer">&times;</button>
+      
+      <div class="space-y-1">
+        <div class="flex items-center space-x-2">
+          <i class="fa-solid fa-eye-slash text-emerald-400"></i>
+          <span class="text-emerald-400 text-xs font-mono uppercase tracking-wider font-bold">SELECTIVE DISCLOSURE INSPECTOR</span>
+        </div>
+        <h3 class="text-xl sm:text-2xl font-bold text-white font-serif-luxury">Scoped Auditor Slice & Proof of Compliance</h3>
+        <p class="text-slate-400 text-xs font-sans">
+          Demonstrating Midnight Network's programmable privacy: Public observers see zero financial details, while accredited auditors verify mathematical solvency via constrained viewing keys.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-mono text-xs">
+        <!-- Public Explorer View -->
+        <div class="bg-black/60 border border-white/[0.08] p-4 rounded-xl space-y-2.5">
+          <div class="flex justify-between items-center border-b border-white/[0.06] pb-2">
+            <span class="text-slate-400 uppercase text-[10px]">Public Ledger View</span>
+            <span class="text-emerald-400 text-[10px] font-bold">100% SHIELDED</span>
+          </div>
+          <div class="space-y-1 text-[11px]">
+            <span class="text-slate-500 block text-[10px]">Agent Identity:</span>
+            <span class="text-slate-300 break-all">0xc17793e695c5...4cc54</span>
+          </div>
+          <div class="space-y-1 text-[11px]">
+            <span class="text-slate-500 block text-[10px]">Revenue Stream:</span>
+            <span class="text-emerald-400 font-bold">[PRIVATE WITNESS]</span>
+          </div>
+          <div class="space-y-1 text-[11px]">
+            <span class="text-slate-500 block text-[10px]">Outstanding Debt:</span>
+            <span class="text-emerald-400 font-bold">[PRIVATE WITNESS]</span>
+          </div>
+          <div class="space-y-1 text-[11px]">
+            <span class="text-slate-500 block text-[10px]">Public Proof Status:</span>
+            <span class="text-white font-bold">VALID (Compact 0.1)</span>
+          </div>
+        </div>
+
+        <!-- Auditor Decrypted View -->
+        <div class="bg-emerald-950/20 border border-emerald-500/30 p-4 rounded-xl space-y-2.5">
+          <div class="flex justify-between items-center border-b border-emerald-500/20 pb-2">
+            <span class="text-emerald-300 uppercase text-[10px]">Auditor Decrypted Slice</span>
+            <span class="text-emerald-400 text-[10px] font-bold">RESTRICTED VIEW</span>
+          </div>
+          <div class="space-y-1 text-[11px]">
+            <span class="text-slate-400 block text-[10px]">Auditor Viewing Key:</span>
+            <span class="text-emerald-300 break-all text-[10px]">0xf045c3f1...7f3d (Scoped)</span>
+          </div>
+          <div class="space-y-1 text-[11px]">
+            <span class="text-slate-400 block text-[10px]">Verified Annual Revenue:</span>
+            <span class="text-white font-bold">&gt; $100,000 (Satisfied)</span>
+          </div>
+          <div class="space-y-1 text-[11px]">
+            <span class="text-slate-400 block text-[10px]">Historical Defaults:</span>
+            <span class="text-emerald-400 font-bold">0 Defaults (Verified)</span>
+          </div>
+          <div class="space-y-1 text-[11px]">
+            <span class="text-slate-400 block text-[10px]">Debt-to-Equity Ratio:</span>
+            <span class="text-emerald-400 font-bold">16.2% (Ceiling &lt; 30%)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-3.5 bg-black/40 border border-white/[0.06] rounded-xl font-mono text-[11px] text-slate-300 space-y-1">
+        <span class="text-emerald-400 font-bold block text-[10px] uppercase">Cryptographic Attestation Hash</span>
+        <span class="break-all text-slate-400 text-[10px]">0x91ae7549acabd5aa33d240760ba5c91d2fb8ea4d4a6b524f1e368a21b83477f1</span>
+      </div>
+
+      <div class="flex justify-end space-x-3">
+        <button onclick="closeModal('auditor-modal')" class="px-5 py-2.5 rounded-xl border border-white/20 text-slate-300 hover:text-white font-mono text-xs cursor-pointer">Close</button>
+        <button onclick="showToast('Auditor verification proof exported to clipboard.'); closeModal('auditor-modal');" class="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold font-mono text-xs cursor-pointer">Export Proof</button>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

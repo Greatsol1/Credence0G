@@ -8,3 +8,7 @@ dist/
 build/
 *.log
 .DS_Store
+
+*.mp4
+*.mp3
+raw_video/

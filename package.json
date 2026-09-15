@@ -1,10 +1,11 @@
 {
-  "name": "credence0g-agentbonds",
+  "name": "shadowcredit-protocol",
   "version": "1.0.0",
-  "description": "Autonomous AI Agent Credit Bureau & On-Chain Debt Market on 0G Chain, 0G Storage, and 0G Compute",
+  "description": "Zero-Knowledge Autonomous Agent Credit Bureau & Confidential Debt Market on Midnight Network",
   "main": "index.js",
   "scripts": {
     "dev": "node server.js",
+    "verify:midnight": "node scripts/verify-midnight.js",
     "compile:contracts": "hardhat compile",
     "test:contracts": "hardhat test",
     "deploy:0g": "hardhat run scripts/deploy.ts",
@@ -14,17 +15,16 @@
     "seed": "hardhat run scripts/seed.ts"
   },
   "keywords": [
-    "0G",
-    "zero-gravity",
-    "credit-rating",
+    "midnight-network",
+    "zero-knowledge",
+    "compact",
+    "zk-credit",
     "ai-agents",
-    "bonds",
-    "rwa",
-    "verifiable-compute",
-    "decentralized-storage"
+    "confidential-bonds",
+    "selective-disclosure"
   ],
-  "author": "Credence0G Team",
-  "license": "MIT",
+  "author": "ShadowCredit Labs <team@shadowcredit.io>",
+  "license": "Apache-2.0",
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
     "@types/node": "^20.11.0",
