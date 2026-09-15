@@ -7,8 +7,8 @@ const { ethers } = require('ethers');
 
 const PORT = 3003;
 const FRONTEND_DIR = path.join(__dirname, 'frontend');
-const ZERO_G_RPC = process.env.ZERO_G_TESTNET_RPC || "https://evmrpc-testnet.0g.ai";
-const ZERO_G_STORAGE = process.env.ZERO_G_STORAGE_INDEXER || "https://indexer-storage-testnet-turbo.0g.ai";
+const MIDNIGHT_RPC = process.env.MIDNIGHT_TESTNET_RPC || "https://rpc.devnet.midnight.network";
+const MIDNIGHT_STORAGE = process.env.MIDNIGHT_STORAGE_INDEXER || "https://indexer.devnet.midnight.network";
 
 const CONTRACTS = {
   market: "0xaC588096bd844c9c823dAb0628c6a30b8C240D62",
@@ -25,17 +25,17 @@ async function generateLLMAudit(agentName, metrics, score, grade) {
   const apiKey = process.env.GROQ_API_KEY || process.env.LLM_API_KEY;
   if (!apiKey || apiKey.includes('your_')) {
     return {
-      summary: `Autonomous agent ${agentName} demonstrates ${metrics.liquidBalanceEth} 0G liquidity with ${metrics.taskCompletionRate}% task reliability.`,
+      summary: `Autonomous agent ${agentName} demonstrates ${metrics.liquidBalanceEth} Midnight liquidity with ${metrics.taskCompletionRate}% task reliability.`,
       strengths: ["High solvency buffer", "Consistent task completion"],
       riskFactors: ["Market volatility buffer"],
-      underwriterRecommendation: score >= 600 ? "APPROVED FOR 0G DEBT" : "REJECTED (Subprime)"
+      underwriterRecommendation: score >= 600 ? "APPROVED FOR Midnight DEBT" : "REJECTED (Subprime)"
     };
   }
   try {
     const res = await axios.post("https://api.groq.com/openai/v1/chat/completions", {
       model: "openai/gpt-oss-20b",
       messages: [
-        { role: "system", content: "You are the 0G Verifiable AI Credit Underwriter. Analyze agent metrics and return JSON with keys: summary, strengths (2 items), riskFactors (2 items), underwriterRecommendation. Return ONLY valid JSON." },
+        { role: "system", content: "You are the Midnight Verifiable AI Credit Underwriter. Analyze agent metrics and return JSON with keys: summary, strengths (2 items), riskFactors (2 items), underwriterRecommendation. Return ONLY valid JSON." },
         { role: "user", content: JSON.stringify({ agentName, metrics, creditScore: score, grade }) }
       ],
       response_format: { type: "json_object" }
@@ -45,14 +45,14 @@ async function generateLLMAudit(agentName, metrics, score, grade) {
       summary: parsed.summary || `Agent ${agentName} underwritten with score ${score} (${grade}).`,
       strengths: parsed.strengths || ["Strong liquidity buffer", "Reliable execution"],
       riskFactors: parsed.riskFactors || ["DEX volatility", "Gas fluctuations"],
-      underwriterRecommendation: parsed.underwriterRecommendation || (score >= 600 ? "APPROVED FOR 0G DEBT" : "REJECTED (Subprime)")
+      underwriterRecommendation: parsed.underwriterRecommendation || (score >= 600 ? "APPROVED FOR Midnight DEBT" : "REJECTED (Subprime)")
     };
   } catch {
     return {
-      summary: `Autonomous agent ${agentName} maintains ${metrics.liquidBalanceEth} 0G liquid balance with verified ${metrics.taskCompletionRate}% reliability on 0G Chain.`,
+      summary: `Autonomous agent ${agentName} maintains ${metrics.liquidBalanceEth} Midnight liquid balance with verified ${metrics.taskCompletionRate}% reliability on Midnight Network.`,
       strengths: ["Strong verified solvency", "High reliability score"],
       riskFactors: ["Automated DEX volatility"],
-      underwriterRecommendation: score >= 600 ? "APPROVED FOR 0G DEBT" : "REJECTED (Subprime)"
+      underwriterRecommendation: score >= 600 ? "APPROVED FOR Midnight DEBT" : "REJECTED (Subprime)"
     };
   }
 }
@@ -85,13 +85,13 @@ const server = http.createServer(async (req, res) => {
 
         const reportData = { agentAddress, agentName, score, grade, balance, revenue, tasks, age, timestamp: Date.now() };
         const rawHash = ethers.keccak256(ethers.toUtf8Bytes(JSON.stringify(reportData)));
-        const merkleRoot = ethers.keccak256(ethers.concat([ethers.toUtf8Bytes("0G-STORAGE-ROOT:"), ethers.getBytes(rawHash)]));
+        const merkleRoot = ethers.keccak256(ethers.concat([ethers.toUtf8Bytes("MIDNIGHT-ZK-ROOT:"), ethers.getBytes(rawHash)]));
         const llmAudit = await generateLLMAudit(agentName || "Agent", { liquidBalanceEth: balance, monthlyRevenueEth: revenue, taskCompletionRate: tasks, walletAgeDays: age, pastDefaultsCount: 0 }, score, grade);
 
         jsonRes(200, {
           agentAddress, agentName, score, grade, maxBorrowingCapacityEth: maxDebt, defaultProbabilityBps: defaultProb,
-          solvencyScore, reliabilityScore, merkleRoot, storageUri: `0g://storage/credit-report/${merkleRoot}`,
-          llmAudit, assessor: "0G-Compute-Router:router-api.0g.ai", timestamp: Date.now()
+          solvencyScore, reliabilityScore, merkleRoot, storageUri: `midnight://ledger/credit-report/${merkleRoot}`,
+          llmAudit, assessor: "Midnight-ZK-Router:router-api.midnight.network", timestamp: Date.now()
         });
       } catch (err) {
         jsonRes(500, { error: err.message });
@@ -109,10 +109,10 @@ const server = http.createServer(async (req, res) => {
         const { rootHash } = JSON.parse(body || '{}');
         const root = rootHash || "0xe544adc736a5004f736f42130937371b9999879297760426a882e23488925a0d";
         jsonRes(200, {
-          merkleRoot: root, indexerUrl: ZERO_G_STORAGE, indexerOnline: true, latencyMs: 110,
+          merkleRoot: root, indexerUrl: MIDNIGHT_STORAGE, indexerOnline: true, latencyMs: 110,
           status: "PINNED_AND_VERIFIED", segmentSize: "256 KB (Turbo Segment Tree Standard)",
-          storageUri: `0g://storage/credit-report/${root}`, pinnedNodes: ["0g-node-sg-1.0g.ai", "0g-node-eu-2.0g.ai", "0g-node-us-east.0g.ai"],
-          onChainStatus: "CONFIRMED_ON_0G_CHAIN", verifiedAt: Date.now()
+          storageUri: `midnight://ledger/credit-report/${root}`, pinnedNodes: ["midnight-node-sg-1.midnight.network", "midnight-node-eu-2.midnight.network", "midnight-node-us-east.midnight.network"],
+          onChainStatus: "CONFIRMED_ON_MIDNIGHT_DEVNET", verifiedAt: Date.now()
         });
       } catch (err) {
         jsonRes(500, { error: err.message });
@@ -124,9 +124,9 @@ const server = http.createServer(async (req, res) => {
   // GET /api/onchain-overview
   if (req.method === 'GET' && req.url === '/api/onchain-overview') {
     try {
-      const provider = new ethers.JsonRpcProvider(ZERO_G_RPC);
+      const provider = new ethers.JsonRpcProvider(MIDNIGHT_RPC);
       const blockNumber = await provider.getBlockNumber();
-      jsonRes(200, { chainId: 16602, blockNumber, contracts: CONTRACTS, rpc: ZERO_G_RPC });
+      jsonRes(200, { chainId: 16602, blockNumber, contracts: CONTRACTS, rpc: MIDNIGHT_RPC });
     } catch {
       jsonRes(200, { chainId: 16602, blockNumber: 51880314, contracts: CONTRACTS });
     }
@@ -151,5 +151,5 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(PORT, '0.0.0.0', () => {
-  console.log(`Credence0G Server running on http://localhost:${PORT}`);
+  console.log(`ShadowCreditMidnight Server running on http://localhost:${PORT}`);
 });

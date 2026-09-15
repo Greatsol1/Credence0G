@@ -2,17 +2,12 @@
   "name": "shadowcredit-protocol",
   "version": "1.0.0",
   "description": "Zero-Knowledge Autonomous Agent Credit Bureau & Confidential Debt Market on Midnight Network",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "dev": "node server.js",
     "verify:midnight": "node scripts/verify-midnight.js",
-    "compile:contracts": "hardhat compile",
-    "test:contracts": "hardhat test",
-    "deploy:0g": "hardhat run scripts/deploy.ts",
-    "test:0g": "hardhat run scripts/test-0g-live.ts",
-    "verify:0g": "hardhat run scripts/verify-0g-live-network.ts",
-    "oracle:daemon": "hardhat run scripts/oracle-daemon.ts",
-    "seed": "hardhat run scripts/seed.ts"
+    "test": "node scripts/verify-midnight.js"
   },
   "keywords": [
     "midnight-network",
@@ -20,21 +15,17 @@
     "compact",
     "zk-credit",
     "ai-agents",
-    "confidential-bonds",
-    "selective-disclosure"
+    "confidential-bonds"
   ],
   "author": "ShadowCredit Labs <team@shadowcredit.io>",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
     "@types/node": "^20.11.0",
     "dotenv": "^16.4.5",
-    "hardhat": "^2.22.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "^5.0.2",
     "ethers": "^6.11.1",
     "axios": "^1.6.8"
   }

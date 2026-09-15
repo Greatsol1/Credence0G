@@ -348,15 +348,15 @@
                   <span>Liquid Balance:</span>
                   <span class="text-gold font-bold" id="val-balance">8.5 tDUST</span>
                 </div>
-                <input type="range" id="input-balance" min="0.1" max="50" step="0.1" value="8.5" oninput="document.getElementById('val-balance').innerText = this.value + ' 0G'" class="w-full h-2 bg-slate-800 rounded-lg cursor-pointer" />
+                <input type="range" id="input-balance" min="0.1" max="50" step="0.1" value="8.5" oninput="document.getElementById('val-balance').innerText = this.value + ' Midnight'" class="w-full h-2 bg-slate-800 rounded-lg cursor-pointer" />
               </div>
 
               <div>
                 <div class="flex justify-between text-slate-300 mb-1 text-[11px] sm:text-xs">
                   <span>Monthly Revenue Run-rate:</span>
-                  <span class="text-emerald-400 font-bold" id="val-revenue">4.2 0G/mo</span>
+                  <span class="text-emerald-400 font-bold" id="val-revenue">4.2 Midnight/mo</span>
                 </div>
-                <input type="range" id="input-revenue" min="0" max="30" step="0.1" value="4.2" oninput="document.getElementById('val-revenue').innerText = this.value + ' 0G/mo'" class="w-full h-2 bg-slate-800 rounded-lg cursor-pointer" />
+                <input type="range" id="input-revenue" min="0" max="30" step="0.1" value="4.2" oninput="document.getElementById('val-revenue').innerText = this.value + ' Midnight/mo'" class="w-full h-2 bg-slate-800 rounded-lg cursor-pointer" />
               </div>
 
               <div>
@@ -435,12 +435,12 @@
 
           <div class="bg-black/40 border border-white/[0.06] p-3 sm:p-4 rounded-xl sm:rounded-2xl space-y-1.5 sm:space-y-2 font-mono text-[11px] sm:text-xs">
             <div class="flex justify-between items-center">
-              <span class="text-slate-500">0G Turbo Storage Merkle Root:</span>
+              <span class="text-slate-500">Midnight Turbo Storage Merkle Root:</span>
               <span class="text-gold font-bold truncate max-w-[160px] sm:max-w-[280px]" id="dossier-merkle-root">0xe544adc736a5004f736f42130937371b9999879297760426a882e23488925a0d</span>
             </div>
             <div class="flex justify-between items-center text-slate-400">
               <span>Midnight Private State URI:</span>
-              <span class="text-slate-300 truncate max-w-[160px] sm:max-w-[280px]" id="dossier-storage-uri">0g://storage/credit-report/0xe544...5a0d</span>
+              <span class="text-slate-300 truncate max-w-[160px] sm:max-w-[280px]" id="dossier-storage-uri">midnight://ledger/credit-report/0xe544...5a0d</span>
             </div>
           </div>
         </div>
@@ -450,7 +450,7 @@
       <!-- Peer Credit Bureau Registry Matrix -->
       <div class="institutional-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 space-y-4 sm:space-y-6">
         <div class="border-b border-white/[0.08] pb-3 sm:pb-4">
-          <h3 class="font-serif-luxury font-bold text-lg sm:text-xl text-white">0G COMPUTE ACTIVE REGISTRY PASSPORTS</h3>
+          <h3 class="font-serif-luxury font-bold text-lg sm:text-xl text-white">Midnight COMPUTE ACTIVE REGISTRY PASSPORTS</h3>
           <span class="text-slate-400 text-xs font-mono">Real-time Verified Agent Scores on <span id="bureau-network-name" class="text-gold font-bold">Midnight DevNet</span></span>
         </div>
 
@@ -463,7 +463,7 @@
             <div class="text-slate-400 text-[11px] space-y-1 font-sans">
               <div>Task Completion: 99.6%</div>
               <div>Historical Default: 0.00%</div>
-              <div>Net Revenue: +12.5 0G/mo</div>
+              <div>Net Revenue: +12.5 Midnight/mo</div>
             </div>
             <div class="pt-2 border-t border-white/[0.06] text-gold truncate">
               Root: 0xe544...5a0d
@@ -478,7 +478,7 @@
             <div class="text-slate-400 text-[11px] space-y-1 font-sans">
               <div>Task Completion: 95.0%</div>
               <div>Historical Default: 0.00%</div>
-              <div>Net Revenue: +3.8 0G/mo</div>
+              <div>Net Revenue: +3.8 Midnight/mo</div>
             </div>
             <div class="pt-2 border-t border-white/[0.06] text-gold truncate">
               Root: 0x34bc...201
@@ -508,7 +508,7 @@
             <div class="text-slate-400 text-[11px] space-y-1 font-sans">
               <div>Task Completion: 65.0%</div>
               <div>Historical Default: 33.3%</div>
-              <div>Net Revenue: +0.1 0G/mo</div>
+              <div>Net Revenue: +0.1 Midnight/mo</div>
             </div>
             <div class="pt-2 border-t border-white/[0.06] text-rose-400 truncate">
               Root: 0x9999...aaaa
@@ -523,7 +523,7 @@
     <div id="tab-inspector" class="hidden space-y-6">
       <div class="institutional-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 space-y-4 sm:space-y-6 font-mono text-xs">
         <div class="flex justify-between items-center border-b border-white/[0.08] pb-3 sm:pb-4">
-          <span class="font-serif-luxury font-bold text-lg sm:text-2xl text-white">0G STORAGE CREDIT REPORT AUDIT</span>
+          <span class="font-serif-luxury font-bold text-lg sm:text-2xl text-white">Midnight STORAGE CREDIT REPORT AUDIT</span>
           <span class="text-gold text-[10px] sm:text-xs">TURBO INDEXER</span>
         </div>
 
@@ -538,7 +538,7 @@
           <div class="bg-black/50 border border-white/[0.06] rounded-xl sm:rounded-2xl p-4 sm:p-5 space-y-2.5 sm:space-y-3" id="inspector-result-box">
             <div class="flex flex-col sm:flex-row sm:justify-between text-slate-400 gap-1">
               <span>Midnight Private State Indexer URI:</span>
-              <span class="text-gold font-mono break-all" id="inspector-uri">0g://storage/credit-report/0xe544...5a0d</span>
+              <span class="text-gold font-mono break-all" id="inspector-uri">midnight://ledger/credit-report/0xe544...5a0d</span>
             </div>
             <div class="flex justify-between text-slate-400">
               <span>Merkle Segment Size:</span>
@@ -550,7 +550,7 @@
             </div>
             <div class="flex flex-col sm:flex-row sm:justify-between text-slate-400 gap-1">
               <span>Pinned Storage Nodes:</span>
-              <span class="text-slate-300 font-mono text-[11px]">0g-node-sg-1, 0g-node-eu-2, 0g-node-us-east</span>
+              <span class="text-slate-300 font-mono text-[11px]">midnight-node-sg-1, midnight-node-eu-2, midnight-node-us-east</span>
             </div>
           </div>
         </div>
@@ -570,13 +570,13 @@
       <div class="space-y-3">
         <div class="bg-black/40 p-3.5 rounded-xl sm:rounded-2xl border border-white/[0.06] space-y-1.5 text-[11px] sm:text-xs">
           <div class="flex justify-between text-slate-400"><span>Borrower Agent:</span><span class="text-white font-bold" id="modal-agent-name">ArbitrageAgent-Prime</span></div>
-          <div class="flex justify-between text-slate-400"><span>Bond ID on 0G:</span><span class="text-gold font-bold" id="modal-bond-id">#1</span></div>
+          <div class="flex justify-between text-slate-400"><span>Bond ID on Midnight:</span><span class="text-gold font-bold" id="modal-bond-id">#1</span></div>
           <div class="flex justify-between text-slate-400"><span>Target Amount:</span><span class="text-white font-bold" id="modal-target-amt">0.10 tDUST</span></div>
           <div class="flex justify-between text-slate-400"><span>Fixed APY Yield:</span><span class="text-emerald-400 font-bold" id="modal-apy">5.00%</span></div>
         </div>
 
         <div>
-          <label class="text-slate-400 block mb-1 uppercase text-[10px]">Underwriting Investment (0G)</label>
+          <label class="text-slate-400 block mb-1 uppercase text-[10px]">Underwriting Investment (tDUST)</label>
           <input type="number" id="modal-sub-input" value="0.05" step="0.01" class="w-full bg-black/60 border border-gold/30 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none" />
         </div>
 
@@ -598,10 +598,10 @@
       <div class="space-y-3">
         <div>
           <label class="text-slate-400 block mb-1 uppercase text-[10px]">Series Title</label>
-          <input type="text" id="issue-title" value="Series 0G-BOND-2026B" class="w-full bg-black/60 border border-white/[0.1] rounded-xl px-3.5 py-2 text-white focus:outline-none" />
+          <input type="text" id="issue-title" value="Series Midnight-BOND-2026B" class="w-full bg-black/60 border border-white/[0.1] rounded-xl px-3.5 py-2 text-white focus:outline-none" />
         </div>
         <div>
-          <label class="text-slate-400 block mb-1 uppercase text-[10px]">Principal Goal (0G)</label>
+          <label class="text-slate-400 block mb-1 uppercase text-[10px]">Principal Goal (tDUST)</label>
           <input type="number" id="issue-goal" value="0.2" step="0.05" class="w-full bg-black/60 border border-gold/30 rounded-xl px-3.5 py-2 text-white focus:outline-none" />
         </div>
         <div class="grid grid-cols-2 gap-3">
@@ -628,7 +628,7 @@
 
   <!-- Footer -->
   <footer class="relative z-10 border-t border-gold/20 bg-[#080514]/95 py-4 sm:py-5 text-center font-mono text-[11px] sm:text-xs text-slate-500 px-4">
-    Credence0G Protocol · Decentralized Autonomous Agent Credit Architecture on Midnight Network, Storage & Compute
+    ShadowCreditMidnight Protocol · Decentralized Autonomous Agent Credit Architecture on Midnight Network, Storage & Compute
   </footer>
 
   <!-- Toast Notification Container -->
@@ -639,20 +639,20 @@
     const NETWORKS = {
       "16602": {
         name: "Midnight DevNet",
-        rpc: "https://evmrpc-testnet.0g.ai",
+        rpc: "https://rpc.devnet.midnight.network",
         chainId: 16602,
         hexChainId: "0x40DA",
-        explorer: "https://chainscan-galileo.0g.ai",
+        explorer: "https://explorer.devnet.midnight.network",
         market: "0xaC588096bd844c9c823dAb0628c6a30b8C240D62",
         registry: "0xaBF81109dd950cdDA067486D59562aEa128b37d2",
         escrow: "0x33096422BEf096A6c02AE59f62B9F7ab602f5A5e"
       },
       "16661": {
         name: "Midnight Testnet",
-        rpc: "https://evmrpc.0g.ai",
+        rpc: "https://rpc.devnet.midnight.network",
         chainId: 16661,
         hexChainId: "0x4115",
-        explorer: "https://chainscan.0g.ai",
+        explorer: "https://explorer.devnet.midnight.network",
         market: "0x73aE0dC431C9c3E05dcAFCC7831B43d2643668c8",
         registry: "0x0ba18878D80D7D901EbC0165f76dBe77f96B0F03",
         escrow: "0x66380e69c44b079d9D4E5316E60a8b54C8754796"
@@ -695,7 +695,7 @@
         return [
           {
             id: 1,
-            title: "Series 0G-BOND-2026A",
+            title: "Series Midnight-BOND-2026A",
             desc: "30-day term AI GPU compute financing for ArbitrageAgent-Prime on Midnight Testnet.",
             agent: "0x595A7A733583B3D50FEB7b2a71a759ffc11931fb",
             goalEth: 0.10,
@@ -709,7 +709,7 @@
       return [
         {
           id: 1,
-          title: "Series 0G-BOND-2026A",
+          title: "Series Midnight-BOND-2026A",
           desc: "30-day term AI GPU compute financing for ArbitrageAgent-Prime on Midnight DevNet.",
           agent: "0x595A7A733583B3D50FEB7b2a71a759ffc11931fb",
           goalEth: 0.10,
@@ -761,7 +761,7 @@
             
             loadedBonds.push({
               id: i,
-              title: `Series 0G-BOND-2026#${i}`,
+              title: `Series Midnight-BOND-2026#${i}`,
               desc: `Verifiable AI agent micro-bond facility issued on ${activeNetwork.name}.`,
               agent: raw.agent,
               goalEth,
@@ -822,7 +822,7 @@
           </p>
           <div class="space-y-1 pt-1">
             <div class="flex justify-between text-slate-400 text-[10px]">
-              <span>Raised: <strong class="text-white">${b.raisedEth.toFixed(2)} / ${b.goalEth.toFixed(2)} 0G</strong></span>
+              <span>Raised: <strong class="text-white">${b.raisedEth.toFixed(2)} / ${b.goalEth.toFixed(2)} Midnight</strong></span>
               <span class="text-gold font-bold">${percent}%</span>
             </div>
             <div class="w-full bg-slate-900 rounded-full h-1.5 overflow-hidden border border-white/[0.08]">
@@ -841,7 +841,7 @@
       }).join('');
 
       document.getElementById('bonds-count').innerText = `${bonds.length} Series Live On ${activeNetwork.name}`;
-      document.getElementById('metric-debt-issued').innerText = `${bonds.reduce((acc, b) => acc + b.goalEth, 0).toFixed(2)} 0G`;
+      document.getElementById('metric-debt-issued').innerText = `${bonds.reduce((acc, b) => acc + b.goalEth, 0).toFixed(2)} Midnight`;
       document.getElementById('metric-proofs-count').innerText = `${proofsCount} Hashes`;
     }
 
@@ -851,7 +851,7 @@
       document.getElementById('modal-title').innerText = `Underwrite ${b.title}`;
       document.getElementById('modal-bond-id').innerText = `#${b.id}`;
       document.getElementById('modal-agent-name').innerText = b.agent ? `${b.agent.slice(0, 6)}...${b.agent.slice(-4)}` : "ArbitrageAgent-Prime";
-      document.getElementById('modal-target-amt').innerText = `${b.goalEth.toFixed(2)} 0G`;
+      document.getElementById('modal-target-amt').innerText = `${b.goalEth.toFixed(2)} Midnight`;
       document.getElementById('modal-apy').innerText = b.apy;
       document.getElementById('sub-modal').classList.remove('hidden');
     }
@@ -898,7 +898,7 @@
     }
 
     async function confirmIssueFacility() {
-      const title = document.getElementById('issue-title').value || "Series 0G-BOND-2026B";
+      const title = document.getElementById('issue-title').value || "Series Midnight-BOND-2026B";
       const goal = parseFloat(document.getElementById('issue-goal').value) || 0.2;
       const apyVal = parseFloat(document.getElementById('issue-apy').value) || 5.5;
       const termDays = parseInt(document.getElementById('issue-term').value) || 30;
@@ -909,7 +909,7 @@
       const durationSeconds = termDays * 86400;
       const prospectusData = { title, goal, apyVal, termDays, desc, issuer: userAccount, timestamp: Date.now() };
       const rawHash = ethers.keccak256(ethers.toUtf8Bytes(JSON.stringify(prospectusData)));
-      const prospectusMerkleRoot = ethers.keccak256(ethers.concat([ethers.toUtf8Bytes("0G-STORAGE-PROSPECTUS:"), ethers.getBytes(rawHash)]));
+      const prospectusMerkleRoot = ethers.keccak256(ethers.concat([ethers.toUtf8Bytes("MIDNIGHT-ZK-PROSPECTUS:"), ethers.getBytes(rawHash)]));
 
       if (web3Signer) {
         try {
@@ -956,9 +956,9 @@
       if (val === 'prime') {
         document.getElementById('bureau-agent-addr').value = '0x595A7A733583B3D50FEB7b2a71a759ffc11931fb';
         document.getElementById('input-balance').value = '8.5';
-        document.getElementById('val-balance').innerText = '8.5 0G';
+        document.getElementById('val-balance').innerText = '8.5 Midnight';
         document.getElementById('input-revenue').value = '4.2';
-        document.getElementById('val-revenue').innerText = '4.2 0G/mo';
+        document.getElementById('val-revenue').innerText = '4.2 Midnight/mo';
         document.getElementById('input-tasks').value = '99.1';
         document.getElementById('val-tasks').innerText = '99.1%';
         document.getElementById('input-age').value = '240';
@@ -966,9 +966,9 @@
       } else if (val === 'sentinel') {
         document.getElementById('bureau-agent-addr').value = '0x71C836427D669F21882208E879e663458F5Bfa0C';
         document.getElementById('input-balance').value = '4.0';
-        document.getElementById('val-balance').innerText = '4.0 0G';
+        document.getElementById('val-balance').innerText = '4.0 Midnight';
         document.getElementById('input-revenue').value = '1.8';
-        document.getElementById('val-revenue').innerText = '1.8 0G/mo';
+        document.getElementById('val-revenue').innerText = '1.8 Midnight/mo';
         document.getElementById('input-tasks').value = '95.0';
         document.getElementById('val-tasks').innerText = '95.0%';
         document.getElementById('input-age').value = '150';
@@ -978,7 +978,7 @@
         document.getElementById('input-balance').value = '15.0';
         document.getElementById('val-balance').innerText = '15.0 tDUST';
         document.getElementById('input-revenue').value = '8.0';
-        document.getElementById('val-revenue').innerText = '8.0 0G/mo';
+        document.getElementById('val-revenue').innerText = '8.0 Midnight/mo';
         document.getElementById('input-tasks').value = '91.0';
         document.getElementById('val-tasks').innerText = '91.0%';
         document.getElementById('input-age').value = '90';
@@ -986,9 +986,9 @@
       } else if (val === 'subprime') {
         document.getElementById('bureau-agent-addr').value = '0x111122223333444455556666777788889999AAAA';
         document.getElementById('input-balance').value = '0.5';
-        document.getElementById('val-balance').innerText = '0.5 0G';
+        document.getElementById('val-balance').innerText = '0.5 Midnight';
         document.getElementById('input-revenue').value = '0.1';
-        document.getElementById('val-revenue').innerText = '0.1 0G/mo';
+        document.getElementById('val-revenue').innerText = '0.1 Midnight/mo';
         document.getElementById('input-tasks').value = '65.0';
         document.getElementById('val-tasks').innerText = '65.0%';
         document.getElementById('input-age').value = '15';
@@ -1037,7 +1037,7 @@
         if (!res.ok) throw new Error("API Assessment failed");
         const data = await res.json();
         renderDossierResults(data);
-        showToast(`0G Verifiable AI Assessment Generated for ${agentName}`);
+        showToast(`Midnight Verifiable AI Assessment Generated for ${agentName}`);
       } catch (err) {
         console.warn("Using local scoring engine:", err);
         const annualRunRate = revenue * 12;
@@ -1060,7 +1060,7 @@
           solvencyScore: solvency,
           reliabilityScore: reliability,
           merkleRoot: "0xe544adc736a5004f736f42130937371b9999879297760426a882e23488925a0d",
-          storageUri: "0g://storage/credit-report/0xe544...5a0d",
+          storageUri: "midnight://ledger/credit-report/0xe544...5a0d",
           llmAudit: {
             summary: `Agent ${agentName} holds ${balance} tDUST liquidity with ${tasks}% task reliability on ${activeNetwork.name}.`,
             strengths: ["Strong liquidity buffer", "Reliable execution"],
@@ -1090,7 +1090,7 @@
         gradePill.className = "px-2.5 py-0.5 rounded-md bg-rose-500/20 text-rose-300 border border-rose-500/30 text-[10px] font-mono font-bold";
       }
 
-      document.getElementById('dossier-max-debt').innerText = `${data.maxBorrowingCapacityEth} 0G`;
+      document.getElementById('dossier-max-debt').innerText = `${data.maxBorrowingCapacityEth} Midnight`;
       document.getElementById('dossier-default-risk').innerText = `${data.defaultProbabilityBps}%`;
       document.getElementById('dossier-solvency').innerText = `${data.solvencyScore} / 200`;
       
@@ -1102,13 +1102,13 @@
       }
 
       document.getElementById('dossier-merkle-root').innerText = data.merkleRoot;
-      document.getElementById('dossier-storage-uri').innerText = data.storageUri || `0g://storage/credit-report/${data.merkleRoot.slice(0, 14)}`;
+      document.getElementById('dossier-storage-uri').innerText = data.storageUri || `midnight://ledger/credit-report/${data.merkleRoot.slice(0, 14)}`;
       document.getElementById('inspectorRoot').value = data.merkleRoot;
 
       document.getElementById('hero-agent-name').innerText = data.agentName;
       document.getElementById('hero-agent-addr').innerText = `${data.agentAddress.slice(0, 8)}...${data.agentAddress.slice(-4)} (${activeNetwork.name})`;
       document.getElementById('hero-grade-pill').innerText = `GRADE ${data.grade} (${data.score})`;
-      document.getElementById('hero-max-credit').innerText = `${data.maxBorrowingCapacityEth} 0G`;
+      document.getElementById('hero-max-credit').innerText = `${data.maxBorrowingCapacityEth} Midnight`;
       document.getElementById('proof-hash-display').innerText = `${data.merkleRoot.slice(0, 10)}...${data.merkleRoot.slice(-6)}`;
     }
 
@@ -1123,11 +1123,11 @@
           body: JSON.stringify({ rootHash: rootVal })
         });
         const data = await res.json();
-        document.getElementById('inspector-uri').innerText = data.storageUri || `0g://storage/credit-report/${rootVal.slice(0, 10)}...${rootVal.slice(-6)}`;
+        document.getElementById('inspector-uri').innerText = data.storageUri || `midnight://ledger/credit-report/${rootVal.slice(0, 10)}...${rootVal.slice(-6)}`;
         document.getElementById('inspector-status').innerText = `VERIFIED & PINNED ON ${activeNetwork.name.toUpperCase()} CLUSTER (Segment: ${data.segmentSize})`;
         showToast(`Midnight Private State Turbo Indexer verified Merkle root proof on ${activeNetwork.name}!`);
       } catch (err) {
-        document.getElementById('inspector-uri').innerText = `0g://storage/credit-report/${rootVal.slice(0, 10)}...${rootVal.slice(-6)}`;
+        document.getElementById('inspector-uri').innerText = `midnight://ledger/credit-report/${rootVal.slice(0, 10)}...${rootVal.slice(-6)}`;
         document.getElementById('inspector-status').innerText = `VERIFIED & PINNED ON ${activeNetwork.name.toUpperCase()} CLUSTER (256 KB Segment)`;
         showToast(`Midnight Private State Turbo Indexer verified Merkle root proof on ${activeNetwork.name}!`);
       }
@@ -1181,7 +1181,7 @@
               params: [{
                 chainId: activeNetwork.hexChainId,
                 chainName: activeNetwork.name,
-                nativeCurrency: { name: '0G', symbol: '0G', decimals: 18 },
+                nativeCurrency: { name: 'tDUST', symbol: 'tDUST', decimals: 18 },
                 rpcUrls: [activeNetwork.rpc],
                 blockExplorerUrls: [activeNetwork.explorer]
               }]
@@ -1353,7 +1353,7 @@
                     params: [{
                       chainId: ZERO_G_HEX_CHAIN_ID,
                       chainName: activeNetwork.name,
-                      nativeCurrency: { name: '0G', symbol: '0G', decimals: 18 },
+                      nativeCurrency: { name: 'tDUST', symbol: 'tDUST', decimals: 18 },
                       rpcUrls: [ZERO_G_RPC],
                       blockExplorerUrls: [activeNetwork.explorer]
                     }]
